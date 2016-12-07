@@ -5,16 +5,21 @@
 .pannel {
   background-color: #fff;
   padding: 0.533333rem 0;
-  border-radius: 14rpx;
+  border-radius: 14px;
   margin-bottom: 1.066667rem;
-  border: 1rpx solid #cacaca;
+  border: 1px solid #cacaca;
 }
 
 .dateNum {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   padding: 0.8rem 1.173333rem 0.8rem 0.906667rem;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .date text {
@@ -28,10 +33,13 @@
 }
 
 .num {
-  width: 36%;
+  width: 26%;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .num text {
@@ -39,21 +47,28 @@
 }
 
 .flight {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
 
 .flightDate {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .flightDate view {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .flightDate view text {
@@ -80,9 +95,12 @@
 }
 
 .flightLine {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .airport {
@@ -98,8 +116,10 @@
 }
 
 .flightDetail {
-  height: 2.346667rem;
-  line-height: 2.346667rem;
+  height: 2.133333rem;
+  line-height: 2.133333rem;
+  border-top: 1px dashed #cacaca;
+  margin-top: 0.213333rem;
 }
 
 .flightDetail text {
@@ -109,8 +129,24 @@
 
 .flightDetail .flightName {
   padding-left: 1.6rem;
-  background: url('../../images/logo.gif') no-repeat 0.266667rem center;
+  background: url('../../images/logo.png') no-repeat 0.266667rem center;
   background-size: auto 36%;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.flightDetail .flightType {
+  width: 30%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.flightDetail .vertical {
+  width: 20%;
+  text-align: center;
 }
 
 .flightDetail .go {
@@ -126,9 +162,12 @@
 }
 
 .remark {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
   height: 0.906667rem;
 }
 
@@ -142,10 +181,8 @@
   font-size: 30rpx;
   text-align: center;
   color: #aaa;
-  margin-top: 0.533333rem;
   height: 1.333333rem;
   line-height: 1.6rem;
-  border-top: 1rpx solid #cacaca;
 }
 
 .changeHotel {
@@ -155,12 +192,16 @@
   margin-top: 0.533333rem;
   height: 1.333333rem;
   line-height: 1.6rem;
-  border-top: 1rpx solid #cacaca;
+  border-top: 1px solid #cacaca;
 }
 
 .goFlight {
-  border-bottom: 1rpx solid #cacaca;
-  margin-bottom: 0.533333rem;
+  border-bottom: 1px solid #cacaca;
+}
+
+.backFlight {
+  border-bottom: 1px solid #cacaca;
+  padding-top: 0.533333rem;
 }
 
 /*酒店*/
@@ -183,14 +224,19 @@
 }
 
 .hotelHead {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .hotelName {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .hotelName text {
@@ -208,57 +254,30 @@
 }
 
 .address {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  margin-bottom: 0.266667rem;
+  font-size: 27rpx;
+}
+
+.address .grey {
+  padding-left: 40rpx;
+}
+
+.address view {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
   margin-bottom: 0.266667rem;
 }
 
-.address text {
-  font-size: 27rpx;
-  padding-left: 50rpx;
-}
-
-.address .addressName {
-  background: url('../../images/location.png') no-repeat 16rpx center;
-  background-size: auto 80%;
-}
-
-.tabBar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 2.8rem;
-  line-height: 2.8rem;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background: rgba(74, 88, 106, 0.9);
-  color: #fff;
-  padding-left: 1.066667rem;
-  box-sizing: border-box;
-}
-
-.tabBar .name {
-  font-size: 30rpx;
-  font-weight: 200;
-}
-
-.tabBar .totalPrice {
-  font-size: 34rpx;
-}
-
-.tabBar .priceDetail {
-  font-size: 30rpx;
-  text-decoration: underline;
-}
-
-.tabBar .nextStep {
-  width: 5.333333rem;
-  height: 2.8rem;
-  line-height: 2.8rem;
-  background-color: #ff7f00;
-  text-align: center;
-  font-weight: 200;
-  font-size: 34rpx;
+.address view .icon {
+  width: 30rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+  background: url('../../images/map.png') no-repeat center center;
+  background-size: cover;
 }

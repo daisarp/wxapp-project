@@ -1,24 +1,30 @@
 .container {
-  height: 100vh;
+  height: 100%;
 }
 
 .pd-70 {
-  padding: 0 1.867rem;
+  padding: 0 1.866667rem;
 }
 
 .wrap {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
 }
 
 .btn {
   width: 100%;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   font-size: 32rpx;
-  justify-content: center;
-  border-bottom: 2rpx solid #cececf;
+  -ms-flex-pack: center;
+      justify-content: center;
+  border-bottom: 1px solid #cececf;
 }
 
 .btn view {
@@ -32,14 +38,14 @@
 
 .btn view.active {
   color: #59A5F0;
-  border-bottom: 7rpx solid #59A5F0;
+  border-bottom: 3.5px solid #59A5F0;
 }
 
 .chooseCity {
   box-sizing: border-box;
   padding-top: 0.96rem;
   background-color: #fff;
-  border-bottom: 2rpx solid #cececf;
+  border-bottom: 1px solid #cececf;
   overflow: hidden;
 }
 
@@ -48,9 +54,12 @@
 }
 
 .chooseCity .citySelect {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   height: 2.667rem;
   line-height: 2.667rem;
   font-size: 42rpx;
@@ -58,13 +67,13 @@
 
 .chooseCity .citySelect .hotelCity {
   width: 100%;
-  border-bottom: 1rpx solid #F0EFF5;
+  border-bottom: 1px solid #F0EFF5;
   color: #4A586A;
 }
 
 .chooseCity .citySelect .startCity {
   width: 6.187rem;
-  border-bottom: 1rpx solid #F0EFF5;
+  border-bottom: 1px solid #F0EFF5;
   color: #4A586A;
 }
 
@@ -101,15 +110,17 @@
 
 .chooseCity .citySelect .endCity {
   width: 6.187rem;
-  border-bottom: 1rpx solid #F0EFF5;
+  border-bottom: 1px solid #F0EFF5;
   text-align: right;
   color: #4A586A;
 }
 
 .chooseDate {
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   height: 2.4rem;
   line-height: 2.4rem;
 }
@@ -130,32 +141,40 @@
   height: 2.13rem;
   line-height: 2.13rem;
   padding: 0 1rem;
-  border-bottom: 2rpx solid #cececf;
+  border-bottom: 1px solid #cececf;
   font-size: 30rpx;
 }
 
 .person {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   background-color: #fff;
   height: 1.813333rem;
   line-height: 1.813333rem;
   padding: 0.8rem 0.533333rem;
-  border-bottom: 2rpx solid #cececf;
+  border-bottom: 1px solid #cececf;
 }
 
 .outer {
+  display: -ms-flexbox;
   display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
-  border: 3rpx solid #a9b1bb;
-  border-radius: 8rpx;
+  -ms-flex: 1;
+      flex: 1;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center;
+  border: 1.5px solid #a9b1bb;
+  border-radius: 8px;
 }
 
 .personNum {
+  display: -ms-flexbox;
   display: flex;
-  flex: 1;
+  -ms-flex: 1;
+      flex: 1;
 }
 
 .person .ml-30 {
@@ -165,13 +184,14 @@
 .outer .minus,
 .outer .num,
 .outer .plus {
-  flex: 1;
+  -ms-flex: 1;
+      flex: 1;
   text-align: center;
 }
 
 .outer .num {
-  border-left: 3rpx solid #a9b1bb;
-  border-right: 3rpx solid #a9b1bb;
+  border-left: 1.5px solid #a9b1bb;
+  border-right: 1.5px solid #a9b1bb;
 }
 
 .text {

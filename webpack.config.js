@@ -18,7 +18,6 @@ var configBase={
                           ]
                 }
             },
-            ,
             {
                 test: /\.(css|less)$/,
                 exclude:/\.(jpe?g|png|jpg|eot|woff|ttf|svg|gif)$/,
@@ -27,7 +26,9 @@ var configBase={
         ]
     },
     postcss: [
-          require('postcss-px2rem')({remUnit:37.5})
+          require('postcss-px2rem')({remUnit:37.5}),
+          require('autoprefixer')({browsers: ['last 2 versions']}),
+          // require('cssnano')()
         ],
     plugins: [
         new ExtractTextPlugin("[name]/[name].wxss", { allChunks: true })

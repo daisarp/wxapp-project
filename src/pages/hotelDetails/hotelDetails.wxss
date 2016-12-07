@@ -1,152 +1,155 @@
-.container_hd {
+.container {
   background-color: #F0EFF5;
 }
 
 .hotelDetails {
   width: 100%;
-  min-height: 100%;
+  position: relative;
 }
 
-.hotelImage {
+.hotelDetails .hotelImage {
   width: 100%;
   margin-bottom: -0.266667rem;
+}
+
+.hotelDetails .hotelName {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2.506667rem;
+  line-height: 2.506667rem;
+  color: white;
+  font-size: 32rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-indent: 1em;
 }
 
 .mapImage {
   width: 100%;
   margin: 0.773333rem 1.04rem 0.96rem;
-  padding-left: 1.12rem;
+  padding-left: 0.666667rem;
   background-color: #F0EFF5;
   box-sizing: border-box;
+  position: relative;
 }
 
 .mapImage text {
   display: block;
-  font-family: "\5FAE\8F6F\96C5\9ED1";
   width: 14rem;
   height: 1.066667rem;
   line-height: 1.066667rem;
-  font-size: 28.12rpx;
+  font-size: 28rpx;
   color: #000;
 }
 
-.mapImage text:before {
-  content: "";
+.mapIcon {
   display: inline-block;
   width: 0.8rem;
   height: 0.933333rem;
-  background: url('../../images/map.png') no-repeat top center;
-  background-size: 100%;
-  position: relative;
+  position: absolute;
   top: 0;
-  left: 0;
+  left: -0.48rem;
 }
 
-.mapImage text:after {
-  content: "";
+.arrowIcon {
   display: inline-block;
   width: 0.4rem;
   height: 0.666667rem;
-  background: url('../../images/Arow.jpg') no-repeat top center;
-  background-size: 100%;
-  position: relative;
+  position: absolute;
   top: 0.16rem;
-  right: -0.586667rem;
+  right: 9.333333rem;
 }
 
 .iconImage {
-  font-family: "\5FAE\8F6F\96C5\9ED1";
   width: 96%;
-  height: 6.266667rem;
   background-color: #fff;
-  border: 1rpx solid #D6D6D6;
+  border: 1px solid #D6D6D6;
   margin: 0 auto;
+  padding-bottom: 0.533333rem;
 }
 
-.up {
+.iconImage .up {
   height: 2.4rem;
-  border-bottom: 1rpx solid #D6D6D6;
+  border-bottom: 1px solid #D6D6D6;
   padding-left: 0.853333rem;
-  font-size: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
-.up .leftIcon {
-  float: left;
-  width: 50%;
-  font-size: 28.12rpx;
+.iconImage .up .leftIcon {
+  width: 60%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  font-size: 28rpx;
   color: #7D8DA4;
-  line-height: 2.4rem;
 }
 
-.up .leftIcon icon {
-  position: relative;
-  top: 10rpx;
+.iconImage .up .leftIcon icon {
+  margin-right: 0.266667rem;
 }
 
-.up .rightIcon {
-  float: right;
-  height: 2.4rem;
-  width: 50%;
-  line-height: 2.4rem;
-  text-align: right;
-  padding-top: 0.4rem;
-  box-sizing: border-box;
+.iconImage .up .rightIcon {
+  width: 40%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
 }
 
-.up .rightIcon .Image_01 {
-  display: inline-block;
+.iconImage .up .rightIcon image {
+  margin-left: 0.8rem;
+}
+
+.iconImage .up .rightIcon .Image_01 {
   width: 0.88rem;
   height: 0.56rem;
-  margin: 0 0.533333rem;
 }
 
-.up .rightIcon .Image_02 {
-  display: inline-block;
+.iconImage .up .rightIcon .Image_02 {
   width: 0.906667rem;
   height: 0.693333rem;
-  margin: -0.106667rem 0.533333rem;
 }
 
-.up .rightIcon .Image_03 {
-  display: inline-block;
+.iconImage .up .rightIcon .Image_03 {
   width: 0.64rem;
   height: 0.64rem;
-  margin: -0.026667rem 0.533333rem;
 }
 
-.down {
+.iconImage .down {
   padding-left: 1.04rem;
-  height: 3.893333rem;
   padding-top: 0.853333rem;
-  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
 }
 
-.down .timerIcon {
-  display: inline-block;
-  width: 17.013333rem;
-  height: 1.946667rem;
-  padding-left: 0.213333rem;
-  font-size: 28.12rpx;
+.iconImage .down .timerIcon {
+  width: 100%;
+  -ms-flex: 1;
+      flex: 1;
+  font-size: 28rpx;
   color: #A7B2C1;
-  text-align: left;
-  line-height: 0.96rem;
-  box-sizing: border-box;
 }
 
-.down:before {
-  content: "";
-  display: inline-block;
-  width: 42rpx;
-  height: 38rpx;
-  background: url("../../images/timer.png") no-repeat top center;
-  background-size: 100%;
-  position: relative;
-  top: -0.213333rem;
-  left: -0.213333rem;
+.iconImage .down .timerImg {
+  width: 1.12rem;
+  height: 1.013333rem;
+  margin-right: 0.4rem;
 }
 
 .leaveHotel {
-  font-family: "\5FAE\8F6F\96C5\9ED1";
   width: 100%;
   height: 2.56rem;
   background-color: #fff;
@@ -167,125 +170,194 @@
   margin-right: 0.453333rem;
 }
 
-.allDetails {
-  margin-bottom: 20rpx;
-  background-color: #F0EFF5;
-  font-family: "\5FAE\8F6F\96C5\9ED1";
-}
-
 .Detailhotel {
   width: 100%;
   height: 4.746667rem;
-  border-bottom: 0.026667rem solid #E6E6E6;
-  font-size: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .Detailhotel .leftHotel {
-  float: left;
-  width: 4.346667rem;
+  width: 4.373333rem;
   height: 4.373333rem;
-  margin: 0.16rem 1.173333rem 0.16rem 0.56rem;
+  border-radius: 50%;
+  margin: 0.16rem 0.533333rem;
 }
 
 .Detailhotel .middleContent {
-  float: left;
-  height: 4.746667rem;
-  width: 9.466667rem;
-  padding: 0.533333rem 0.533333rem 0.586667rem 0;
-  box-sizing: border-box;
-}
-
-.Detailhotel .middleContent text {
-  display: block;
+  padding: 0.533333rem 0;
+  width: 90%;
+  -ms-flex: 1;
+      flex: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .Detailhotel .middleContent .text_01 {
-  height: 1.04rem;
-  line-height: 1.04rem;
-  font-size: 30.46rpx;
+  font-size: 30rpx;
   color: #444444;
 }
 
 .Detailhotel .middleContent .text_02 {
-  font-size: 23.43rpx;
+  font-size: 24rpx;
   color: #9BA7B9;
-  line-height: 0.693333rem;
+  padding-top: 0.133333rem;
+  padding-bottom: 0.133333rem;
 }
 
 .Detailhotel .middleContent .text_03 {
-  font-size: 23.43rpx;
+  font-size: 24rpx;
   color: #58A4EE;
-  height: 1.066667rem;
   line-height: 1.066667rem;
+  position: relative;
 }
 
-.Detailhotel .middleContent .text_03:after {
-  content: "";
-  display: inline-block;
+.Detailhotel .middleContent .text_03 .reviseIcon {
   width: 0.826667rem;
   height: 0.826667rem;
-  background: url("../../images/revise.png") no-repeat top center;
-  background-size: 100%;
-  position: relative;
-  top: 0.266667rem;
-  right: -0.453333rem;
+  position: absolute;
+  top: 0.133333rem;
+  left: 1.52rem;
 }
 
 .Detailhotel .rightPrice {
-  float: right;
-  padding: 22rpx 0 13rpx 0;
-  height: 150rpx;
-  width: 235rpx;
-  /*background-color: green;*/
-  box-sizing: border-box;
+  padding: 0.533333rem 0;
+  height: 4.746667rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .Detailhotel .rightPrice text {
-  display: block;
-  width: 235rpx;
+  width: 5.013333rem;
   height: 65rpx;
   line-height: 65rpx;
-  font-size: 40rpx;
+  font-size: 36rpx;
   font-weight: bold;
-  text-align: center;
 }
 
-.Detailhotel .rightPrice .add {
+.Detailhotel .rightPrice text.add {
   color: #FF7F00;
 }
 
-.Detailhotel .rightPrice .reduce {
+.Detailhotel .rightPrice text.reduce {
+  padding-left: 0.533333rem;
+  box-sizing: border-box;
   color: #58A4EE;
 }
 
 .Detailhotel .rightPrice button {
-  display: block;
-  width: 130rpx;
-  height: 60rpx;
-  border: 2rpx solid #E55922;
-  font-size: 22rpx;
-  line-height: 60rpx;
-  margin-right: 30rpx;
+  width: 3.466667rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border: 1px solid #E55922;
+  font-size: 26rpx;
+  margin-top: 0.266667rem;
 }
 
 .Detailhotel .rightPrice .Choose {
   color: #E55922;
   position: relative;
+  padding-left: 0.426667rem;
+  padding-right: 0.266667rem;
 }
 
-.Detailhotel .rightPrice .Choose:before {
-  content: "";
-  display: inline-block;
-  width: 40rpx;
-  height: 40rpx;
-  background: url("../../images/trueIcon.png") no-repeat top right;
-  background-size: 100%;
+.Detailhotel .rightPrice .Choose .ChooseIcon {
+  width: 0.986667rem;
+  height: 1.013333rem;
   position: absolute;
-  bottom: -2rpx;
-  right: -1rpx;
+  bottom: -0.08rem;
+  right: -0.08rem;
 }
 
 .Detailhotel .rightPrice .noChoose {
+  text-align: center;
   color: #fff;
   background-color: #E55922;
+}
+
+.position {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.position .pop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+}
+
+.position .bg_gray {
+  width: 14.346667rem;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1002;
+  transform: translate(-50%, -50%);
+  border-radius: 0.266667rem;
+}
+
+.position .bg_gray .upBlue {
+  width: 100%;
+  height: 2.186667rem;
+  line-height: 2.186667rem;
+  background-color: #58a4ef;
+  color: #fff;
+  font-size: 36rpx;
+  line-height: 2.213333rem;
+  text-align: center;
+  font-weight: 200;
+  border-top-left-radius: 0.213333rem;
+  border-top-right-radius: 0.213333rem;
+}
+
+.position .bg_gray .roomcontainer {
+  height: 8rem;
+  overflow-y: auto;
+}
+
+.position .bg_gray .roomcontainer .number {
+  width: 100%;
+  height: 2.666667rem;
+  line-height: 2.666667rem;
+  font-size: 0;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.position .bg_gray .roomcontainer .number:last-child {
+  border-bottom: none;
+}
+
+.position .bg_gray .roomcontainer .number .leftFixed {
+  display: inline-block;
+  width: 7.84rem;
+  color: #4a4a4a;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.position .bg_gray .roomcontainer .number .rightFixed {
+  display: inline-block;
+  color: #ff6c00;
+  font-size: 30rpx;
 }

@@ -33,7 +33,9 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
+    "autoprefixer": "6.5.3",
     "core-js": "^2.4.1",
+    "cssnano": "3.8.1",
     "utils-merge": "^1.0.0"
   }
 }

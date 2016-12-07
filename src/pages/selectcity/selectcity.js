@@ -1,96 +1,88 @@
-
+var app = getApp();
+var letters=require('../../utils/cityInfo.js').letters;
 Page({
-  data:{
-    currentIndex:0,
-    array:[{
-      message:'上海',
-    },{
-      message:'北京'
-    }],
-    arrayHot:[{message:'上海' },{ message:'深圳'},{ message:'广州'},{message:'广州'},{message:'广州'},{message:'广州'},{message:'广州'
-    },{message:'广州'},{message:'深圳'},{message:'深圳'},{ message:'深圳'},{message:'深圳'},{message:'深圳'
-    },{message:'深圳'},{message:'深圳'}],
-    aList:[{message:'阿尔山'},{message:'阿里'},{message:'阿里'},{message:'阿里'},{message:'阿里'},{message:'阿里'}],
-    bList:[{message:'宝山'},{message:'宝山'},{message:'宝山'},{message:'宝山'},{message:'宝山'},{message:'宝山'},{message:'宝山'}],
-    word:[{
-      id:'A',   
-      message:'当前'
-    },{
-      id:'B', 
-      message:'热门'
-    },{
-      id:'C', 
-      message:'A'
-    },{
-      id:'D', 
-      message:'B'
-    },{
-      id:'E', 
-      message:'C'
-    },{
-      message:'F'
-    },{
-      message:'G'
-    },{
-      message:'H'
-    },{
-      message:'I'
-    },{
-      message:'J'
-    },{
-      message:'K'
-    },{
-      message:'L'
-    },{
-      message:'M'
-    },{
-      message:'N'
-    },{
-      message:'O'
-    },{
-      message:'P'
-    },{
-      message:'Q'
-    },{
-      message:'R'
-    },{
-      message:'S'
-    },{
-      message:'T'
-    },{
-      message:'U'
-    },{
-      message:'V'
-    },{
-      message:'W'
-    },{
-      message:'X'
-    },{
-      message:'Y'
-    },{
-      message:'Z'
-    }],
+    data: {
+        currentIndex: 0,
+        letterId:''
+    },
 
-  },
+    onLoad:function(){
+        this.type=arguments[0].type;
+        var that=this;
+        app.get('api/City/GetDestinationCityList',{
+            isRequireFilterByAirport:this.type==2
+        }).then(function(data){
+            if(data.Code==200){
+                var ForeignCity=that.getCityList(data.Data.ForeignCityList);
+                var InternalCity=that.getCityList(data.Data.InternalCityList);
+                that.setData({
+                    foreignCity:ForeignCity.cityList,
+                    foreignLetters:ForeignCity.newLetters,
+                    internalCity:InternalCity.cityList,
+                    internalLetters:InternalCity.newLetters
+                })
+            }
+            
+        }).catch(function(e){
+            console.log(e)
+        })
+    },
+    getCityList:function(list){
+        var newLetters=[];
+        var cityList={};
+        letters.forEach(function(le){
+            var count=0;
+            (list||[]).forEach(function(li){
+                if(li.Initial.toUpperCase()==le){
+                    count++;
+                    cityList[le]==undefined&&(cityList[le]=[]);
+                    cityList[le].push(li);
+                }
+            })
+            count&&newLetters.push(le);
+        })
 
- 
-  handleTapEvent:function(ev){
-    // console.log(ev.target.dataset.index);
+        return {
+            newLetters:newLetters,
+            cityList:cityList
+        }
+    },
 
-    this.setData({
-      currentIndex:ev.target.dataset.index
-    })
-  },
+    handleLetterTap:function(ev){
+        var id=ev.target.dataset.id;
+        this.setData({
+            letterId:id+this.data.currentIndex
+        });
+    },
 
-  handleChangeEvent:function(ev){
-    //打印时间对象知道， current 在事件对象里面
-    console.log(ev.detail.current);
-     this.setData({
-      currentIndex:ev.detail.current
-    })
-    
-  },
+    handleTapEvent: function(ev) {
 
+        this.setData({
+            currentIndex: ev.target.dataset.index
+        })
+    },
 
+    handleChangeEvent: function(ev) {
+        //打印时间对象知道， current 在事件对象里面
+        this.setData({
+          currentIndex: ev.detail.current
+        })
+    },
 
+    bindChangeCity: function(e) { //绑定返回的页面
+      var city = e.currentTarget.dataset.city;
+      var fn = app.globalData.cityFn;
+      var type=this.type;
+      if (typeof fn == 'function') {
+        setTimeout(function(){
+          fn(city,type);
+          app.globalData.cityFn=null;
+        },0)
+        wx.navigateBack({
+          delta: 1
+        });
+      }
+    }
 })
+
+// Initial Spell CityCode 

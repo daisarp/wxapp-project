@@ -7,15 +7,16 @@
 .pannel{
   background-color: #fff;
   padding: 20px 0;
-  border-radius: 14rpx;
+  border-radius: 14px; /*no*/
   margin-bottom: 40px;
-  border: 1rpx solid #cacaca;
+  border: 1px solid #cacaca; /*no*/
 }
 .dateNum{
   display: flex;
 	flex-direction: row;
 	justify-content: space-between;
   padding: 30px 44px 30px 34px;
+  align-items: center;
 }
 .date text{
   font-size: 30rpx;
@@ -29,7 +30,7 @@
   text{
     font-size: 30rpx;
   }
-  width: 36%;
+  width: 26%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -86,31 +87,51 @@
 }
 
 .flightDetail{
-  height: 88px;
-  line-height: 88px;
+  height: 80px;
+  line-height: 80px;
+  border-top: 1px dashed #cacaca;/*no*/
+  margin-top: 8px;
+  text{
+    font-size: 30rpx;
+    color: #9caabc;
+  }
+  .flightName{
+    padding-left: 60px;
+    background: url('@{imgUrl}logo.png') no-repeat 10px center;
+    background-size: auto 36%;
+
+    width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .flightType{
+    width: 30%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .vertical{
+    width: 20%;
+    text-align: center;
+  }
+
+  .go{
+    background-color: #ff7f00;
+    color: #fff;
+    display: block;
+    font-size: 28rpx;
+    width: 86px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    margin-top: 21px;
+  }
 }
 
-.flightDetail text{
-  font-size: 30rpx;
-  color: #9caabc;
-}
 
-.flightDetail .flightName{
-  padding-left: 60px;
-  background: url('@{imgUrl}logo.gif') no-repeat 10px center;
-  background-size: auto 36%;
-}
-.flightDetail .go{
-  background-color: #ff7f00;
-  color: #fff;
-  display: block;
-  font-size: 28rpx;
-  width: 86px;
-  height: 46px;
-  line-height: 46px;
-  text-align: center;
-  margin-top: 21px;
-}
 .remark{
   display: flex;
   flex-direction: row;
@@ -128,10 +149,8 @@
   font-size: 30rpx;
   text-align: center;
   color: #aaa;
-  margin-top: 20px;
   height: 50px;
   line-height: 60px;
-  border-top: 1rpx solid #cacaca;
 }
 .changeHotel{
   font-size: 30rpx;
@@ -140,11 +159,15 @@
   margin-top: 20px;
   height: 50px;
   line-height: 60px;
-  border-top: 1rpx solid #cacaca;
+  border-top: 1px solid #cacaca;/*no*/
 }
 .goFlight{
-  border-bottom: 1rpx solid #cacaca;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #cacaca;/*no*/
+}
+
+.backFlight{
+  border-bottom: 1px solid #cacaca;/*no*/
+  padding-top: 20px;
 }
 
 /*酒店*/
@@ -189,53 +212,23 @@
   display: flex;
 	flex-direction: column;
   margin-bottom: 10px;
-}
-.address text{
   font-size: 27rpx;
-  padding-left: 50rpx;
-}
-.address .addressName{
-  background: url('@{imgUrl}location.png') no-repeat 16rpx center;
-  background-size: auto 80%;
-}
 
+  .grey{
+    padding-left: 40rpx;
+  }
 
-.tabBar {
-	position:fixed;
-	bottom:0;
-	left:0;
-	height:105px;
-  line-height: 105px;
-	width:100%;
-	display:flex;
-	flex-direction:row;
-  justify-content: space-between;
-	background:rgba(74,88,106,0.9);
-	color:#fff;
-  padding-left: 40px;
-  box-sizing: border-box;
-}
+  view{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    .icon{
+      width: 30rpx;
+      height: 35rpx;
+      margin-right: 10rpx;
+      background: url('@{imgUrl}map.png') no-repeat center center;
+      background-size: cover;
+    }
+  }
 
-.tabBar .name{
-  font-size: 30rpx;
-  font-weight: 200;
-}
-
-.tabBar .totalPrice{
-  font-size: 34rpx;
-}
-
-.tabBar .priceDetail{
-  font-size: 30rpx;
-  text-decoration: underline;
-}
-
-.tabBar .nextStep{
-  width: 200px;
-  height: 105px;
-  line-height: 105px;
-  background-color: #ff7f00;
-  text-align: center;
-  font-weight: 200;
-  font-size: 34rpx;
 }

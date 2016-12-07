@@ -1,307 +1,343 @@
 @import "./imgUrl/imgUrl.less";
-.container_hd{
-    background-color:#F0EFF5;  
+
+.container {
+    background-color: #F0EFF5;
 }
-.hotelDetails{
+
+.hotelDetails {
     width: 100%;
-    min-height:100%;
-    // background-color: red;
+    position: relative;
+
+    .hotelImage {
+        width: 100%;
+        margin-bottom: -10px;
+    }
+
+    .hotelName {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 94px;
+        line-height: 94px;
+        color: white;
+        font-size: 32rpx;
+        background-color: rgba(0,0,0,0.5);
+        text-indent: 1em;
+    }
 }
-.hotelImage{
+
+.mapImage {
     width: 100%;
-    margin-bottom: -10px;
-}
-.mapImage{
-    width: 100%;
-    
     margin: 29px 39px 36px;
-    padding-left:42px; 
-    background-color:#F0EFF5; 
+    padding-left: 25px;
+    background-color: #F0EFF5;
     box-sizing: border-box;
-    text{
-        display:block;
-        font-family: "微软雅黑";
+    position: relative;
+    text {
+        display: block;
         width: 525px;
         height: 40px;
         line-height: 40px;
-        font-size: 28.12rpx;
-        color:#000; 
+        font-size: 28rpx;
+        color: #000;
     }
-    
-}
-.mapImage text:before{
-            content: "";
-            display: inline-block;
-            width:30px;
-            height:35px;
-            background: url('@{imgUrl}map.png')no-repeat top center;
-            background-size: 100%;
-            position: relative;
-            top:0;
-            left:0;
-}
-.mapImage text:after{
-            content: "";
-            display: inline-block;
-            width:15px;
-            height:25px;
-            background:  url('@{imgUrl}Arow.jpg')no-repeat top center;
-            background-size: 100%;
-            position: relative;
-            top:6px;
-            right:-22px;
 }
 
-.iconImage{
-    font-family: "微软雅黑";
-    width: 96%;
-    height: 235px;
-    background-color: #fff;
-    border: 1rpx solid #D6D6D6;
-    margin: 0 auto;
-}
-.up{
-    height:90px;
-    border-bottom:1rpx solid #D6D6D6;  
-    padding-left: 32px;
-    font-size: 0;
-}
-.up .leftIcon{
-    float: left;
-    width: 50%;
-    font-size: 28.12rpx;
-    color: #7D8DA4;
-    line-height: 90px;
-}
-.up .leftIcon icon{
-   position: relative;
-   top:10rpx;
-}
-.up .rightIcon{
-    float: right;
-    height: 90px;
-    width: 50%;
-    line-height: 90px;
-    text-align: right;
-    padding-top: 15px;
-    box-sizing: border-box;
-}
-.up .rightIcon .Image_01{
+.mapIcon {
     display: inline-block;
-    width:33px;
-    height:21px;
-    margin:0 20px;
-}
-.up .rightIcon .Image_02{
-    display: inline-block;
-    width:34px;
-    height:26px;
-    margin:-4px 20px;
-}
-.up .rightIcon .Image_03{
-    display: inline-block;
-    width:24px;
-    height:24px;
-    margin:-1px 20px;
-}
-.down{
-     padding-left: 39px;
-     height: 146px;
-     padding-top:32px; 
-     box-sizing: border-box;
-}
-.down .timerIcon{
-    display:inline-block;
-    width: 638px;
-    // background-color: pink;
-    height: 73px;
-    padding-left: 8px;
-    font-size: 28.12rpx;
-    color:#A7B2C1;
-    text-align: left;
-    line-height:36px; 
-    box-sizing: border-box;
-}
-.down:before{
-    content: "";
-    display: inline-block;
-    width:42rpx;
-    height:38rpx;
-    background:  url("../../images/timer.png")no-repeat top center;
-    background-size: 100%;
-    position: relative;
-    top:-8px;
-    left:-8px;
-}
-.leaveHotel{
-    font-family: "微软雅黑";
-    width: 100%;
-    height: 96px;
-    background-color: #fff;
-    margin:13px 0 25px; 
-}
-.leaveHotel .leavehotel{
-    height: 96px;
-    line-height: 96px;
-    font-size:24rpx;
-    color:#AAAAAA;  
-    padding-left: 58px;
-}
-.leaveHotel .leavehotel text{
-    color:#444444;
-    font-size:30rpx;
-    margin-right: 17px;
-}
-// 所有酒店详情
-.allDetails{
-    margin-bottom: 20rpx;
-    background-color: #F0EFF5;
-    font-family: "微软雅黑";
-}
-.Detailhotel{
-    width: 100%;
-    height: 178px;
-    border-bottom: 1px solid #E6E6E6;
-    font-size: 0;
-}
-.Detailhotel .leftHotel{
-    float: left;
-    width: 163px;
-    height: 164px;
-    margin: 6px 44px 6px 21px;
-}
-.Detailhotel .middleContent{
-    float: left;
-    height: 178px;
-    width:355px;
-    // background-color: pink;
-    padding:20px 20px 22px 0;
-    box-sizing: border-box;
-}
-.Detailhotel .middleContent text{
-    display: block;
-}
-.Detailhotel .middleContent .text_01{
-    height: 39px;
-    line-height: 39px;
-    font-size:30.46rpx;
-    color: #444444;
-}
-.Detailhotel .middleContent .text_02{
-    font-size:23.43rpx;
-    color: #9BA7B9;
-    line-height:26px;
-}
-.Detailhotel .middleContent .text_03{
-    font-size:23.43rpx;
-    color: #58A4EE;
-    height: 40px;
-    line-height: 40px;
-}
-.Detailhotel .middleContent .text_03:after{
-    content: "";
-    display: inline-block;
-    width:31px;
-    height:31px;
-    background:  url("../../images/revise.png")no-repeat top center;
-    background-size: 100%;
-    position: relative;
-    top:10px;
-    right:-17px;
-}
-.Detailhotel .rightPrice{
-    float: right;
-    padding:22rpx 0 13rpx 0;
-    height: 150rpx;
-    width:235rpx;
-    /*background-color: green;*/
-    box-sizing: border-box;
-}
-.Detailhotel .rightPrice text{
-    display: block;
-    width: 235rpx;
-    height:65rpx; 
-    line-height: 65rpx;
-    font-size:40rpx;
-    font-weight: bold;
-    text-align: center;
-}
-.Detailhotel .rightPrice .add{
-    color: #FF7F00;
-}
-
-.Detailhotel .rightPrice .reduce{
-    color: #58A4EE;
-}
-.Detailhotel .rightPrice button{
-    display: block;
-    width:130rpx;
-    height: 60rpx;
-    border:2rpx solid #E55922;  
-    font-size:22rpx;
-    line-height: 60rpx;
-    margin-right: 30rpx;
-}
-.Detailhotel .rightPrice .Choose{
-    color: #E55922;
-    position: relative;
-}
-.Detailhotel .rightPrice .Choose:before{
-    content:"";
-    display: inline-block;
-    width: 40rpx;
-    height: 40rpx;
-    background: url("../../images/trueIcon.png")no-repeat top right; 
-    background-size: 100%;
+    width: 30px;
+    height: 35px;
     position: absolute;
-    bottom: -2rpx;
-    right: -1rpx;
+    top: 0;
+    left: -18px;
 }
-.Detailhotel .rightPrice .noChoose{
-    color:#fff;
-    background-color:#E55922; 
+
+.arrowIcon {
+    display: inline-block;
+    width: 15px;
+    height: 25px;
+    position: absolute;
+    top: 6px;
+    right: 350px;
 }
-// .footer{
-//     width: 100%;
-//     height:92rpx;
-//     position: relative;
-//     background-color:#AAAAAA;  
-// }
-// .footer .retract{
-//     position: absolute;
-//     z-index: 10;
-//     top:25rpx;
-//     left: 50%;
-//     margin-left: -20rpx;
-//     margin-top: -4rpx;
-//     color: #fff;
-//     font-size: 22rpx;
-// }
-// .footer .footerIcon{
-//     display: block;
-//     width: 145rpx;
-//     height: 61rpx;
-//     margin: 0 auto;
-//     position: relative;
-// }
-// /*箭头向上--收起*/
-// .footerIcon .topimg{
-//     width:20rpx;
-//     height:11rpx;
-//     position:absolute;
-//     top:6rpx;
-//     left:65rpx;
-//     transform:translateY(180deg);
-//     transition:all 2s;
-//     /*display: none;*/
-// }
-// /*箭头向下--展开*/
-// .footerIcon .hidden{
-//     width:20rpx;
-//     height:11rpx;
-//     position:absolute;
-//     top:6rpx;
-//     left:65rpx;
-//     transform:translateY(180deg);
-//     transition:all 2s;
-// }
+
+.iconImage {
+    width: 96%;
+    background-color: #fff;
+    border: 1px solid #D6D6D6; /*no*/
+    margin: 0 auto;
+    padding-bottom: 20px;
+    .up {
+        height: 90px;
+        border-bottom: 1px solid #D6D6D6;/*no*/
+        padding-left: 32px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+        .leftIcon {
+          width: 60%;
+          display: flex;
+          align-items: center;
+          font-size: 28rpx;
+          color: #7D8DA4;
+          icon{
+            margin-right: 10px;
+          }
+        }
+
+        .rightIcon {
+          width: 40%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+
+          image{
+            margin-left: 30px;
+          }
+          .Image_01 {
+            width: 33px;
+            height: 21px;
+          }
+
+          .Image_02 {
+            width: 34px;
+            height: 26px;
+          }
+
+          .Image_03 {
+            width: 24px;
+            height: 24px;
+          }
+        }
+    }
+
+    .down {
+      padding-left: 39px;
+      padding-top: 32px;
+      display: flex;
+      flex-direction: row;
+
+      .timerIcon {
+        width: 100%;
+        flex: 1;
+        font-size: 28rpx;
+        color: #A7B2C1;
+      }
+
+      .timerImg {
+        width: 42px;
+        height: 38px;
+        margin-right: 15px;
+      }
+    }
+}
+
+.leaveHotel {
+    width: 100%;
+    height: 96px;
+    background-color: #fff;
+    margin: 13px 0 25px;
+
+    .leavehotel {
+        height: 96px;
+        line-height: 96px;
+        font-size: 24rpx;
+        color: #AAAAAA;
+        padding-left: 58px;
+
+        text {
+            color: #444444;
+            font-size: 30rpx;
+            margin-right: 17px;
+        }
+    }
+}
+
+
+// 所有酒店详情
+
+.Detailhotel {
+    width: 100%;
+    height: 178px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .leftHotel {
+      width: 164px;
+      height: 164px;
+      border-radius: 50%;
+      margin: 6px 20px;
+    }
+
+    .middleContent {
+      padding: 20px 0;
+      width: 90%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      .text_01 {
+        font-size: 30rpx;
+        color: #444444;
+      }
+
+      .text_02 {
+        font-size: 24rpx;
+        color: #9BA7B9;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .text_03 {
+        font-size: 24rpx;
+        color: #58A4EE;
+        line-height: 40px;
+        position: relative;
+        .reviseIcon {
+          width: 31px;
+          height: 31px;
+          position: absolute;
+          top: 5px;
+          left: 57px;
+        }
+      }
+    }
+
+    .rightPrice {
+      padding: 20px 0;
+      height: 178px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text {
+        width: 188px;
+        height: 65rpx;
+        line-height: 65rpx;
+        font-size: 36rpx;
+        font-weight: bold;
+        &.add {
+          color: #FF7F00;
+        }
+
+        &.reduce {
+          padding-left: 20px;
+          box-sizing: border-box;
+          color: #58A4EE;
+        }
+      }
+
+
+      button {
+        width: 130px;
+        height: 60px;
+        line-height: 60px;
+        border: 1px solid #E55922;/*no*/
+        font-size: 26rpx;
+        margin-top: 10px;
+      }
+
+      .Choose {
+        color: #E55922;
+        position: relative;
+        padding-left: 16px;
+        padding-right: 10px;
+        .ChooseIcon {
+          width: 37px;
+          height: 38px;
+          position: absolute;
+          bottom: -3px;
+          right: -3px;
+        }
+      }
+
+      .noChoose {
+          text-align: center;
+          color: #fff;
+          background-color: #E55922;
+      }
+    }
+}
+
+
+//弹层修改间数
+.position {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .pop{
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.8);
+      position: absolute;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+    }
+    .bg_gray {
+        width: 538px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1002;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+
+        .upBlue {
+            width: 100%;
+            height: 82px;
+            line-height: 82px;
+            background-color: #58a4ef;
+            color: #fff;
+            font-size: 36rpx;
+            line-height: 83px;
+            text-align: center;
+            font-weight: 200;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .roomcontainer{
+          height: 300px;
+          overflow-y: auto;
+          .number {
+              width: 100%;
+              height: 100px;
+              line-height: 100px;
+              font-size: 0;
+              border-bottom: 1px solid #cbcbcb;/*no*/
+              &:last-child{
+                border-bottom: none;
+              }
+              .leftFixed {
+                  display: inline-block;
+                  width: 294px;
+                  color: #4a4a4a;
+                  font-size: 30rpx;
+                  text-align: center;
+              }
+
+              .rightFixed {
+                  display: inline-block;
+                  color: #ff6c00;
+                  font-size: 30rpx;
+              }
+          }
+        }
+
+
+    }
+}
