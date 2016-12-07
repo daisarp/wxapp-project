@@ -20,3 +20,20 @@ npm install
 ```
 npm run webpack:w
 ```
+
+## 功能介绍
+ - 预订酒店
+ - 预订机票
+ - 下单
+ - 添加乘客
+ - 订单列表
+ - 订单详情
+
+## 项目中截图
+![首页](images/首页.png)
+![机酒详情页](images/机酒详情页.png)
+![修改机票](images/修改机票.png)
+![更换酒店](images/更换酒店.png)
+![酒店详情页](images/酒店详情页.png)
+![订单列表页](images/订单列表页.png)
+![订单详情页](images/订单详情页.png)

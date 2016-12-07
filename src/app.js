@@ -1,8 +1,8 @@
 var promise = require('utils/promise.js');
 App({
   globalData: {
-    // baseurl: 'http://vacations.ceair.com/app', //线上的接口
-    baseurl: 'http://dev-WechatApi.ceair.com',//62测试接口
+    baseurl: 'http://vacations.ceair.com/app', //线上的接口
+    // baseurl: 'http://dev-WechatApi.ceair.com',//62测试接口
     errMsg: '很抱歉，所选日期产品目前资源不足，请重新选择！'
   },
 
