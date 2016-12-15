@@ -1,13 +1,58 @@
 page {
   height: 100%;
+  background: #F0EFF5;
+}
+
+.borderBo {
+  position: relative;
+}
+
+.borderBo:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #cbcbcc;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.borderTop {
+  position: relative;
+}
+
+.borderTop:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid #D6D6D6;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .head {
   width: 100%;
   height: 4.533333rem;
   background-color: #fff;
-  border-bottom: 1px solid #cbcbcc;
+  position: relative;
   margin-bottom: 1.333333rem;
+}
+
+.head:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #cbcbcc;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .head .addIcon {
@@ -19,17 +64,37 @@ page {
 }
 
 .head .cjr {
-  font-size: 28rpx;
-  color: #929fb1;
+  font-size: 30rpx;
+  color: #536277;
   text-align: center;
   height: 1.653333rem;
 }
 
 .wrap {
   width: 100%;
-  border-top: 1px solid #cbcbcc;
-  border-bottom: 1px solid #cbcbcc;
   background: #FFFFFF;
+  position: relative;
+}
+
+.wrap:before,
+.wrap:after {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.wrap:before {
+  top: 0;
+  border-top: 1px solid #cbcbcc;
+}
+
+.wrap:after {
+  bottom: 0;
+  border-bottom: 1px solid #cbcbcc;
 }
 
 .wrap .sum {
@@ -40,61 +105,65 @@ page {
       flex-direction: row;
   -ms-flex-align: center;
       align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  position: relative;
+}
+
+.wrap .sum:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #cbcbcc;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .wrap .sum .sum-left {
-  width: 105rpx;
-  height: 98rpx;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex: 1;
+      flex: 1;
 }
 
 .wrap .sum .sum-left .ch-img {
   width: 46rpx;
   height: 46rpx;
-  margin-top: 26rpx;
   margin-left: 35rpx;
 }
 
-.wrap .sum:last-child .user {
+.wrap .sum .sum-left .user-left {
+  width: 46rpx;
+  height: 46rpx;
+  margin-left: 0.666667rem;
+}
+
+.wrap .sum:last-child:before {
   border-bottom: none;
 }
 
-.wrap .sum .user {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex: 1;
-      flex: 1;
-  border-bottom: 1px solid #cbcbcc;
-  width: 100%;
+.wrap .sum .user-right {
+  margin-left: 0.32rem;
   font-size: 28rpx;
-  overflow: hidden;
-}
-
-.wrap .sum .user .user-left {
-  width: 46rpx;
-  height: 46rpx;
-  margin-top: 26rpx;
-}
-
-.wrap .sum .user .user-right {
   -ms-flex: 1;
       flex: 1;
-  margin: 13rpx 0 0 10rpx;
 }
 
-.wrap .sum .user .redack {
+.wrap .sum .redack {
   width: 140rpx;
   height: 98rpx;
 }
 
-.wrap .sum .user .redack .red-img {
+.wrap .sum .redack .red-img {
   width: 58rpx;
   height: 60rpx;
   margin-top: 20rpx;
-  margin-left: 35rpx;
+  margin-left: 45rpx;
 }
 
 .add {

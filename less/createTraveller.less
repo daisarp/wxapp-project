@@ -2,12 +2,13 @@
 
 page{
   height: 100%;
+  width: 100%;
+  background: #F0EFF5;
 }
 
 .container {
   height: 100%;
   width: 100%;
-  padding-bottom: 30px;
 }
 
 form {
@@ -15,27 +16,14 @@ form {
   height: auto;
 }
 
-label {
-  width: 40%;
-}
-
-input {
-  height: 100px;
-  line-height: 100px;
-  display: block;
-  width: 60%;
-  padding-right: 60rpx;
-}
-
 picker{
   width: 60%;
   height: 100px;
   line-height: 100px;
   padding-right: 60rpx;
-  font-size: 32rpx;
+  font-size: @font-base-size;
   .placeholder{
-    color: #ddd;
-    font-size: 32rpx;
+    color: @palceholder-color;
   }
 }
 
@@ -53,7 +41,7 @@ radio-group{
     align-items: baseline;
     width: 40%;
     flex: 1;
-    font-size: 32rpx;
+    font-size: @font-base-size;
     radio{
       width: 40rpx;
     }
@@ -66,28 +54,43 @@ radio-group{
   padding-top: 50px;
   .banner {
     width: 100%;
-    border-bottom: 1px solid #C7C7C7;/*no*/
-    border-top: 1px solid #C7C7C7;/*no*/
     padding-top: 0;
     background: #fff;
-
     .airpeople {
       height: 104px;
-      border-bottom: 1px solid #C7C7C7;/*no*/
       line-height: 104px;
       display: flex;
-      flex-direction: row;
       flex: 1;
       justify-content: flex-start;
       align-items: center;
       position: relative;
-
-      .airp {
+      &:after{
+        content: '';
+        width: 200%;
+        height: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-bottom: 1px solid #C7C7C7;/*no*/
+        transform: scale(0.5);
+        transform-origin: 0 0;
+      }
+      label.airp {
+        width: 7em;
         display: block;
-        color: #929fb1;
-        font-size: 32rpx;
+        color: @font-color;
+        font-size: @font-base-size;
       }
 
+      input {
+        height: 100px;
+        line-height: 100px;
+        display: block;
+        width: 100%;
+        flex: 1;
+        padding-right: 30px;
+        font-size: @font-base-size;
+      }
       .arow {
         width: 15rpx;
         height: 26rpx;
@@ -97,12 +100,14 @@ radio-group{
         margin-top: -13rpx;
       }
       .airname {
-        font-size: 32rpx;
+        font-size: @font-base-size;
         color: #59a5f0;
       }
 
       &:last-child{
-        border-bottom: none;
+        &:after{
+          border-bottom: none;
+        }
       }
     }
   }
@@ -124,10 +129,27 @@ radio-group{
 
 
 //常旅客卡
-.layout {
-  margin-left: 34px;
+.layout{
+  padding-left: 38px;
+  position: relative;
+  &:before,&:after{
+    content: '';
+    width: 200%;
+    height: 0;
+    position: absolute;
+    left: 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+  &:before{
+    top: 0;
+    border-top: 1px solid #C7C7C7;/*no*/
+  }
+  &:after{
+    bottom: 0;
+    border-bottom: 1px solid #C7C7C7;/*no*/
+  }
 }
-
 .travellerCard {
   height: 100px;
   line-height: 100px;
@@ -135,8 +157,8 @@ radio-group{
   label {
     float: left;
     width: 500rpx;
-    color: #4a586a;
-    font-size: 32rpx;
+    color: @font-color;
+    font-size: @font-base-size;
     margin-left: 34px;
   }
 }
@@ -149,7 +171,6 @@ radio-group{
   width: 100px;
   margin-right: 39px;
   box-sizing: border-box;
-
   switch {
     display: block;
     height: 100px;

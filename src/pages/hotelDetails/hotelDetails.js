@@ -1,6 +1,7 @@
 let app = getApp();
 let compose = require('../../utils/compose');
 let dateFormat = require('../../utils/dateutil');
+let utils = require('../../utils/utils');
 let level = 1;
 
 let selectHotelInfo, productSearchParams;
@@ -16,6 +17,8 @@ Page({
     level = params.level; //更改跳转层级
     productSearchParams = wx.getStorageSync('productSearchParams');//酒店详情页的搜索参数
     selectHotelInfo = wx.getStorageSync('selectHotelInfo');//酒店详情页的搜索参数
+
+    selectHotelInfo.HotelDes = utils.replaceHtml(selectHotelInfo.HotelDes); //替换html里的标签
 
     this.setData({
       selectHotelInfo: selectHotelInfo,

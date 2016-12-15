@@ -1,5 +1,10 @@
-
 @import "./imgUrl/imgUrl.less";
+
+page{
+  height: 100%;
+  background-color: #F0EFF5;
+}
+
 .containerSmall {
   width: 100%;
   margin: 0 auto;
@@ -8,92 +13,130 @@
   line-height:39px;
 }
 
-input{
-  font-family: '微软雅黑';
-}
-
 //隐藏
 .hid{
   display: none!important;
-}
-//隐藏是border取消
-.airpeople_Line{
-  border-bottom: none!important;
 }
 .head {
   background: #59A5F0 ;
   width: 100%;
   position: fixed;
-  padding-left: 39px;
-  padding-right: 39px;
+  padding-left: 35px;
+  padding-right: 35px;
   z-index: 1001;
   box-sizing: border-box;
 }
 .line {
   color: #FFFFFF;
-  font-size: 32rpx;
+  font-size: @font-base-size;
 }
 
 .state {
   color: #C5DFF9;
   height: 60px;
   .gostate {
-    font-size: 26rpx;
+    font-size: @font-base-size - 4;
     height: 60px;
     line-height: 60px;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
     .txtstate_02{
-      margin-right: 0.933rem;
-      margin-left: 0.933rem;
-      height: 65px;
-    }
-    .txtstate_03{
-      margin-left: 0.33rem;
+      margin-right: 20px;
+      margin-left: 20px;
     }
     .txtstate_04{
       display: inline-block;
-      width: 123px;
-      height: 65px;
-      text-align: right
+      margin-left: 10px;
     }
   }
 }
 
 //未知
 .ordergood {
-  background:#F0EFF5;
   position: absolute;
   top:119rpx;
   width: 100%;
-  font-size: 28rpx;
+  font-size: @font-base-size;
 }
-
+.borderBo{
+  position: relative;
+  &:before{
+    content: '';
+    width: 200%;
+    height: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-bottom: 1px solid #C7C7C7; /*no*/
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+.borderTop{
+  position: relative;
+  &:before{
+    content: '';
+    width: 200%;
+    height: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top: 1px solid #C7C7C7; /*no*/
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
 .banner {
   width:100%;
-  border-bottom: 1px solid #C7C7C7;/*no*/
   margin-top: 0;
   background: #fff;
   margin-bottom: 37px;
   padding-left:34px;
   box-sizing: border-box;
+  position: relative;
+  &:before,&:after{
+    content: '';
+    width: 200%;
+    height: 0;
+    position: absolute;
+    left: 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+  &:before{
+    border-top: 1px solid #C7C7C7; /*no*/
+    top: 0;
+  }
+  &:after{
+    border-bottom: 1px solid #C7C7C7; /*no*/
+    bottom: 0;
+  }
 }
 
 .airpeople {
   height: 104px;
-  border-bottom:1px solid #C7C7C7;/*no*/
+  .borderTop();
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &.border_none{
+    padding-right: 40px;
+    &:before{
+      display: none;
+    }
+  }
+  
   input{
       font-family:'Microsoft YaHei';
+      flex: 1;
   }
   .airp {
     display:block;
     color: #536277;
-    width:4.8rem;
+    width: 25%;
   }
   &.airLine{
-    border-top: 1px solid #C7C7C7;/*no*/
+    .borderTop();
   }
   .star{
       display:inline-block;
@@ -102,10 +145,10 @@ input{
       color:#ff7f00;
   }
   .addp {
-    margin-right:39px;
     .add {
       width: 58px;
       height: 58px;
+      display: block;
     }
   }
   .picker{
@@ -115,18 +158,10 @@ input{
 }
 
 .person {
-  // height: 100px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  border-bottom: 1px solid #C7C7C7; /*no*/
-
-  &:last-child{
-    border-bottom: none;
-  }
-
+  .borderTop();
   .delete {
     width: 44px;
     height: 44px;
@@ -156,59 +191,51 @@ input{
     align-items: center;
     justify-content: space-around;
 
-    text {
-      display: block;
-      color: #536277;
-
-      &.name{
-        width: 40%;
+    view{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      &.arrow {
+        width: 15px;
+        height: 26px;
+        margin-right: 39px;
+        .arow_01{
+           width: 15px;
+           height: 26px;
+        }
       }
 
-      &.card{
-        width: 60%;
+      &.personInfo{
+        display: flex;
+        width: 100%;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-start;
+        view {
+          width: 100%;
+          color: #536277;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+        }
       }
 
-    }
-
-
-    .arow {
-      width: 15px;
-      height: 26px;
-      margin-right: 39px;
-      .arow_01{
-         width: 15px;
-         height: 26px;
-      }
     }
   }
-
-
 }
 
 
 //联系人信息
 .banner_02{
-    border-top: 1px solid #C7C7C7;/*no*/
     padding-top: 0px;
 }
-.airpeople_01{
-     border-bottom:none;
-}
-
 
 //发票信息
 .body-view_01{
-    display: block;
-    line-height: 100px;
-    height: 100px;
-    width: 100px;
-    margin-right:39px;
-    box-sizing: border-box;
     switch{
       display: block;
-      height: 100px;
-      line-height: 100px;
-      margin-top: 18px;
     }
 }
 
@@ -218,7 +245,7 @@ input{
   padding-right: 0;
   line-height: 100px;
   input{
-    font-size: 28rpx;
+    font-size: @font-base-size;
   }
 }
 .arow_03{
@@ -227,6 +254,7 @@ input{
   margin-right: 39px;
   margin-top:0px;
 }
+
 //优惠券
 .banner_03{
     height: 206px;
@@ -248,18 +276,6 @@ input{
 .layout_01 {
     height:206px;
 }
-.airpeople_02{
-    height:100px;
-    width: 100%;
-    padding-left:35px;
-    border-bottom:0;
-    box-sizing: border-box;
-}
-.airpeople_03{
-  height: 100px;
-  padding-left:35px;
-  border-bottom:1px solid #C7C7C7;/*no*/
-}
 
 .picker{
     color:#929FB1;
@@ -273,7 +289,6 @@ label {
 input {
   height: 100px;
   line-height: 100px;
-  width: 500px;
   display: block;
 }
 .insure {
@@ -294,7 +309,7 @@ input {
   line-height: 105px;
 }
 .airinsure {
-  color: #536277;
+  color: @font-color;
   margin-right: 10px;
 }
 
@@ -335,7 +350,7 @@ input {
   }
   .txt {
     color:#929FB1;
-    font-size:26rpx;
+    font-size:@font-base-size - 6;
     height: 82px;
     navigator {
       color:#59A5F0;

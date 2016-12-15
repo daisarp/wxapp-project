@@ -1,5 +1,6 @@
-.container {
-  background-color: #F0EFF5;
+page {
+  height: 100%;
+  background: #F0EFF5;
 }
 
 .hotelDetails {
@@ -9,7 +10,9 @@
 
 .hotelDetails .hotelImage {
   width: 100%;
-  margin-bottom: -0.266667rem;
+  height: 12.266667rem;
+  margin: 0 auto;
+  display: block;
 }
 
 .hotelDetails .hotelName {
@@ -17,8 +20,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2.506667rem;
-  line-height: 2.506667rem;
+  height: 2.56rem;
+  line-height: 2.56rem;
   color: white;
   font-size: 32rpx;
   background-color: rgba(0, 0, 0, 0.5);
@@ -27,29 +30,25 @@
 
 .mapImage {
   width: 100%;
-  margin: 0.773333rem 1.04rem 0.96rem;
-  padding-left: 0.666667rem;
+  padding: 0.773333rem 1.04rem 0.96rem;
   background-color: #F0EFF5;
   box-sizing: border-box;
-  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mapImage .mapIcon {
+  width: 0.8rem;
+  height: 0.933333rem;
+  display: block;
 }
 
 .mapImage text {
-  display: block;
   width: 14rem;
-  height: 1.066667rem;
-  line-height: 1.066667rem;
   font-size: 28rpx;
   color: #000;
-}
-
-.mapIcon {
-  display: inline-block;
-  width: 0.8rem;
-  height: 0.933333rem;
-  position: absolute;
-  top: 0;
-  left: -0.48rem;
+  display: block;
+  margin-left: 0.4rem;
 }
 
 .arrowIcon {
@@ -64,14 +63,26 @@
 .iconImage {
   width: 96%;
   background-color: #fff;
-  border: 1px solid #D6D6D6;
   margin: 0 auto;
   padding-bottom: 0.533333rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.iconImage:before {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #D6D6D6;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .iconImage .up {
   height: 2.4rem;
-  border-bottom: 1px solid #D6D6D6;
   padding-left: 0.853333rem;
   display: -ms-flexbox;
   display: flex;
@@ -79,6 +90,19 @@
       flex-direction: row;
   -ms-flex-align: center;
       align-items: center;
+  position: relative;
+}
+
+.iconImage .up:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #D6D6D6;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .iconImage .up .leftIcon {
@@ -107,21 +131,21 @@
       justify-content: flex-start;
 }
 
-.iconImage .up .rightIcon image {
+.iconImage .up .rightIcon view image {
   margin-left: 0.8rem;
 }
 
-.iconImage .up .rightIcon .Image_01 {
+.iconImage .up .rightIcon view image.Image_01 {
   width: 0.88rem;
   height: 0.56rem;
 }
 
-.iconImage .up .rightIcon .Image_02 {
+.iconImage .up .rightIcon view image.Image_02 {
   width: 0.906667rem;
   height: 0.693333rem;
 }
 
-.iconImage .up .rightIcon .Image_03 {
+.iconImage .up .rightIcon view image.Image_03 {
   width: 0.64rem;
   height: 0.64rem;
 }
@@ -129,10 +153,9 @@
 .iconImage .down {
   padding-left: 1.04rem;
   padding-top: 0.853333rem;
+  padding-right: 0.8rem;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
 }
 
 .iconImage .down .timerIcon {
@@ -141,6 +164,7 @@
       flex: 1;
   font-size: 28rpx;
   color: #A7B2C1;
+  text-align: justify;
 }
 
 .iconImage .down .timerImg {
@@ -172,13 +196,27 @@
 
 .Detailhotel {
   width: 100%;
-  height: 4.746667rem;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
   -ms-flex-align: center;
       align-items: center;
+  position: relative;
+}
+
+.Detailhotel:after {
+  content: '';
+  width: 200%;
+  height: 0;
+  border-bottom: 1px solid #D6D6D6;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.Detailhotel:last-child .Detailhotel:after {
+  display: none;
 }
 
 .Detailhotel .leftHotel {
@@ -249,6 +287,7 @@
 
 .Detailhotel .rightPrice text.add {
   color: #FF7F00;
+  text-align: center;
 }
 
 .Detailhotel .rightPrice text.reduce {
@@ -264,6 +303,10 @@
   border: 1px solid #E55922;
   font-size: 26rpx;
   margin-top: 0.266667rem;
+}
+
+.Detailhotel .rightPrice button:after {
+  border: none;
 }
 
 .Detailhotel .rightPrice .Choose {

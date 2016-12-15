@@ -86,15 +86,16 @@ Page({
     var count=0,
         newList=[];
 
-    fightList.forEach(function(item){
+    fightList.forEach(function(item,index){
       var minPrice=null;
       var flight={
         FightStartDate:dateFormat.formatHour(item.FightStartDate*1000),
         FightEndDate:dateFormat.formatHour(item.FightEndDate*1000),
-        hidden:true
+        hidden:true,
+        mId:index
       };
 
-      item.AirSpaceList.forEach(function(i){
+      item.AirSpaceList.forEach(function(i,idx){
         if(minPrice==null||minPrice>=i.PriceDifference)
           minPrice=i.PriceDifference;
         var asy=i.PriceDifference>=0?'+':'-';
@@ -107,7 +108,9 @@ Page({
         Object.assign(i,{
           asy:asy,
           storeStatus:storeStatus,
-          color:color
+          color:color,
+          asyPrice:Math.abs(i.PriceDifference),
+          id:''+index+idx
         })
         count++;
       })

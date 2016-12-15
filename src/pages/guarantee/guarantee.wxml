@@ -1,5 +1,3 @@
-<!--guarantee.wxml-->
-
 <view class="container">
     <view class="guarantee">
         <text class="addBold font28">特别提示：</text>

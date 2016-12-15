@@ -34,7 +34,7 @@
                     <view class="cityList">
                         <block wx:for="{{internalLetters}}" wx:key="*this"  wx:for-item='le'>
                             <view class="letterList" id="{{le+'0'}}">{{le}}</view>
-                            <view wx:for="{{internalCity}}" wx:key="name" wx:for-item='ct'  bindtap="bindChangeCity" data-city="{{ct.CityName}}">{{ct.CityName}}</view>
+                            <view wx:for="{{internalCity[le]}}" wx:key="name" wx:for-item='ct'  bindtap="bindChangeCity" data-city="{{ct.CityName}}">{{ct.CityName}}</view>
                         </block>
                     </view>
                 </scroll-view>
@@ -44,7 +44,7 @@
                     <view class="cityList">
                         <block wx:for="{{foreignLetters}}" wx:key="*this"  wx:for-item='le'>
                             <view class="letterList" id="{{le+'0'}}">{{le}}</view>
-                            <view wx:for="{{foreignCity}}" wx:key="name" wx:for-item='ct'  bindtap="bindChangeCity" data-city="{{ct.CityName}}">{{ct.CityName}}</view>
+                            <view wx:for="{{foreignCity[le]}}" wx:key="name" wx:for-item='ct'  bindtap="bindChangeCity" data-city="{{ct.CityName}}">{{ct.CityName}}</view>
                         </block>
                     </view>
                 </scroll-view>

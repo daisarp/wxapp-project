@@ -27,8 +27,8 @@ var configBase={
     },
     postcss: [
           require('postcss-px2rem')({remUnit:37.5}),
-          require('autoprefixer')({browsers: ['last 2 versions']}),
-          // require('cssnano')()
+          require('autoprefixer')({browsers: ['> 1%', 'last 2 versions']}),
+          require('cssnano')()
         ],
     plugins: [
         new ExtractTextPlugin("[name]/[name].wxss", { allChunks: true })

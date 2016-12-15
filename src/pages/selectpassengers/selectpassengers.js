@@ -22,7 +22,7 @@ Page({
     let that=this;
 
     return (list||[]).map(function(item){
-      let passengerType=utils.isChild(new Date(item.Birthday,that.lastDepartureTime))?'儿童':(utils.isAdult(new Date(item.Birthday),that.lastDepartureTime)?'成人':'婴儿');
+      let passengerType=utils.isChild(new Date(item.Birthday),that.lastDepartureTime)?'儿童':(utils.isAdult(new Date(item.Birthday),that.lastDepartureTime)?'成人':'婴儿');
       let name =utils.getName(item);
       let type=utils.getCardType(item.CardType);
       let selected=that.selectedPassengerList.indexOf(item.ID)>-1;
@@ -79,7 +79,11 @@ Page({
       delta:1
     })
   },
-
+  add:function(){
+    wx.navigateTo({
+      url:'../createTraveller/createTraveller?type=2'
+    })
+  }
 
 
 })

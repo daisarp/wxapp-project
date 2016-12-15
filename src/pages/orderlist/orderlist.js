@@ -12,8 +12,8 @@ Page({
 
     onLoad: function() {
       this.loadMore();
+      this.refreshHandle();
     },
-
 
     loadMore(){
       if(!this.data.hasMore) return
@@ -34,9 +34,7 @@ Page({
               return;
             }
           }else if(data.Code === 200 && data.Data.OrderList.length){
-            data.Data.OrderList.forEach((item) => {
-              item.OrderStatus = app.orderStatus(item.OrderStatus)
-            })
+            this.editOrderList(data.Data.OrderList);
 
             this.setData({
               orderList: this.data.orderList.concat(data.Data.OrderList)
@@ -52,17 +50,56 @@ Page({
       })
     },
 
+    refreshHandle:function(){
+      app.globalData.reloadOrderList=()=>{
+        app.post('api/Order/GetOrderAppListView',{
+          PageIndex: 1,
+          PageSize: this.data.size
+        }).then((data) =>{
+          if(data.Code === 200 && data.Data.OrderList.length){
+            this.editOrderList(data.Data.OrderList);
+
+            this.setData({
+              orderList: data.Data.OrderList,
+              page:1
+            });
+
+            if(data.Data.OrderList.length < this.data.size){
+              this.setData({ hasMore: false })
+            }
+          }
+        });
+      }
+    },
+
     //跳到订单详情页
     tapdetail(e) {
       let order = e.currentTarget.dataset.order;
 
-      /*let that = this;
-      app.globalData.refreshOrderList = function(){
-        that.onLoad();
-      }*/
-
+      let that = this;
+      app.globalData.refreshOrderList = function(mergeData){
+        if(mergeData instanceof Object){
+          that.data.orderList.forEach((item) => {
+            if(item.OrderID == mergeData.OrderID){
+              item.OrderStatus = mergeData.OrderStatus
+            }
+          });
+          that.setData({
+            orderList: that.data.orderList
+          })
+        }
+      }
       wx.navigateTo({
         url: `../orderdetail/orderdetail?order=${order}`
       })
+    },
+
+    editOrderList(array){//修改订单的状态
+      if(array instanceof Array){
+        array.forEach((item) => {
+          item.OrderStatus = app.orderStatus(item.OrderStatus)
+        });
+        return array;
+      }
     }
 })

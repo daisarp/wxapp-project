@@ -1,9 +1,9 @@
 var promise = require('utils/promise.js');
 App({
   globalData: {
-    baseurl: 'http://vacations.ceair.com/app', //线上的接口
+    baseurl: 'https://vacations.ceair.com/wechat', //线上的接口
     // baseurl: 'http://dev-WechatApi.ceair.com',//62测试接口
-    errMsg: '很抱歉，所选日期产品目前资源不足，请重新选择！'
+    errMsg: '所选日期产品目前资源不足，请重新选择！'
   },
 
   fetchApi (url, params, method='GET') {
@@ -138,7 +138,13 @@ App({
           }).then((data) => {
             that.globalData.AccessToken = `${data.Data.Token}:${data.Data.CredentialsId}`;
             resolve('already login!');
-          }).catch(err => console.log(err))
+          },()=>resolve('login failed')).catch(err => {
+            console.log(err)
+            resolve('login failed');
+          })
+        },
+        fail:function(){
+          resolve('login failed');
         }
       });
     })
@@ -169,4 +175,26 @@ Object.values=function(obj){
     values.push(obj[key])
   }
   return values;
+}
+
+//Object.assign兼容性处理
+if (typeof Object.assign != 'function') {
+  Object.assign = function(target) {
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    target = Object(target);
+    for (var index = 1; index < arguments.length; index++) {
+      var source = arguments[index];
+      if (source != null) {
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+    }
+    return target;
+  };
 }

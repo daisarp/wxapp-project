@@ -45,7 +45,7 @@ Page({
       	countryOptionValues:this.countryOptionValues,
       	countryValue:0,
       	checkCityValue:0,
-      	isPassport:false,
+      	isPassport:passengerInfo.isInternational?true:false,
       	isInternational:passengerInfo.isInternational,
       	gender:true,
       	name:'',
@@ -69,17 +69,17 @@ Page({
       		let lastName=passengerNameEN.split('/')[1]||'';
       		let isPassport=utils.isPassport(passengerItem.CardType);
       		Object.assign(data,{      			
-      			cardType:passengerItem.CardType?this.cardTypeValues.indexOf(passengerItem.CardType):0,
+      			cardType:passengerItem.CardType?this.cardTypeKeys.indexOf(passengerItem.CardType.toString()):0,
       			name:passengerItem.PassengerName||'',
-      			firstName:firstName||'',
-      			lastName:lastName||'',
+      			firstName:firstName,
+      			lastName:lastName,
       			gender:passengerItem.Gender==1,
       			phone:passengerItem.MobilePhone||'',
-      			passportExpireDate: dateFormat.formatDay(new Date(passengerItem.PassportExpireDate)),  
-      			checkDate:dateFormat.formatDay(new Date(passengerItem.checkDate)), 			
-      			birthday:dateFormat.formatDay(new Date(passengerItem.Birthday)),      			
+      			passportExpireDate: passengerItem.PassportExpireDate?dateFormat.formatDay(new Date(passengerItem.PassportExpireDate)):'',  
+      			checkDate:passengerItem.CheckDate?dateFormat.formatDay(new Date(passengerItem.CheckDate)):'', 			
+      			birthday:passengerItem.Birthday?dateFormat.formatDay(new Date(passengerItem.Birthday)):'',      			
       			cardNo:passengerItem.CardNo||'',      			
-      			customerType:passengerItem.PassengerType?this.customerTypeKeys.indexOf(passengerItem.PassengerType):0,      			
+      			customerType:passengerItem.PassengerType?this.customerTypeKeys.indexOf(passengerItem.PassengerType.toString()):0,      			
       			checkCityValue:passengerItem.CheckCityCode?this.countryOptionKeys.indexOf(passengerItem.CheckCityCode):0,
       			countryValue:passengerItem.CountryCode?this.countryOptionKeys.indexOf(passengerItem.CountryCode):0,
       			isPassport:isPassport
@@ -117,16 +117,18 @@ Page({
     	if(msg){
     		utils.message(msg);
     	}else{
-
+        this.submit(e.detail.value);
     	}
     },
     submit:function(value){
     	let that=this;
-    	if(this.padding)return;
-    	this.globalData.afterLogin.then(function(){
+    	app.globalData.afterLogin.then(()=>{
+        if(this.padding)return;
+        this.padding=true;
+        utils.loadingShow();
     		app.post('api/Passenger/AddPassenger',{
-    			PassengerList:[{
-				"ID":this.id,
+    			    PassengerList:[{
+				        "ID":this.id,
                 "FirstName": value.firstName,
                 "MiddleName": "",
                 "LastName": value.lastName,
@@ -145,23 +147,28 @@ Page({
                 "CheckCityCode":this.countryOptionKeys[value.checkCityValue],
                 "PassportExpireDate": value.passportExpireDate?dateFormat.timestamp(value.passportExpireDate):''
               }],              
-              ProductKey:this.productKey
-    		})
-    	}).then(function(data){
-    		that.padding=false;
-    		if(data.Code==400){
-    			app.login().then(function(){
-    				utils.message('信息保存失败，请重新点击确定按钮保存！');
-    			})
-    		}else if(data.Code==200){
-    			that.setPassengerInfo(data,value);
-    			let fn=app.globalData.refreshPassenger;
-			    if(typeof fn=='function')
-			      setTimeout(fn,0);
-			    wx.navigateBack({
-			      delta:this.type
-			    })
-    		}
+            ProductKey:this.productKey
+    		}).then(function(data){
+            wx.hideToast();
+            that.padding=false;
+            if(data.Code==4){
+              app.login().then(function(){
+                utils.message('信息保存失败，请重新点击确定按钮保存！');
+              })
+            }else if(data.Code==200){
+              that.setPassengerInfo(data,value);
+              let fn=app.globalData.refreshPassenger;
+              if(typeof fn=='function')
+                setTimeout(fn,0);
+              wx.navigateBack({
+                delta:that.type
+              });
+            }else if(data.Msg){
+              utils.message(data.Msg);
+            }
+          }).catch(function(e){
+            console.log(e);       
+          })
     	}).catch(function(e){
     		console.log(e);    		
     	})
@@ -183,18 +190,20 @@ Page({
     		Gender:value.gender==1,
     		MobilePhone:value.phone,
     		PassengerName:value.name,
-    		PassengerNameEN:value.firstName+'/'+value.lastName,
+    		PassengerNameEN:(value.firstName||'') +'/'+(value.lastName||''),
     		PassengerType:this.customerTypeKeys[value.customerType],
     		PassportExpireDate:value.passportExpireDate
     	}
 
     	
-		this.passengerList=this.passengerList.filter(function(item){
-			return item.ID!=this.id
-		}).unshift(passengerItem);
-		this.selectedPassengerList=this.selectedPassengerList.filter(function(item){
-			return item!=this.id;
-		}).unshift(newID);
+  		this.passengerList=this.passengerList.filter((item)=>{
+  			return item.ID!=this.id
+  		});
+      this.passengerList.unshift(passengerItem);
+  		this.selectedPassengerList=this.selectedPassengerList.filter((item)=>{
+  			return item!=this.id;
+  		});
+      this.selectedPassengerList.unshift(newID);
     	wx.setStorageSync('passengerInfo',Object.assign({},this.passengerInfo,{
     		passengerList:this.passengerList,
     		selectedPassengerList:this.selectedPassengerList
@@ -214,10 +223,15 @@ Page({
     		msg="生日不能为空！";
     	}else if(!value.cardNo){
     		msg="证件号码不能为空！";
-    	}else if(isPassport&&!value.passportExpireDate){
-    		msg="护照有效期不能为空！";
+    	}else if(value.cardType==0&&!utils.verifyIdentity(value.cardNo)){
+        msg="身份证号码格式错误！";
+      }else if(value.cardType==1&&!utils.varifyPassport(value.cardNo)){
+        msg='护照格式错误！';
+      }
+      else if(isPassport&&!value.passportExpireDate){
+    		msg="证件有效期不能为空！";
     	}else if(isPassport&&!value.checkDate){
-    		msg='护照签发日期不能为空！';
+    		msg='证件签发日期不能为空！';
     	}
 
     	return msg;
@@ -243,10 +257,12 @@ Page({
     		msg="生日不能为空！";
     	}else if(!value.cardNo){
     		msg="证件号码不能为空！";
-    	}else if(isPassport&&!value.passportExpireDate){
-    		msg="护照有效期不能为空！";
-    	}else if(isPassport&&!value.checkDate){
-    		msg='护照签发日期不能为空！';
+    	}else if(value.cardType==0&&!utils.varifyPassport(value.cardNo)){
+        msg='护照格式错误！';
+      }else if(!value.passportExpireDate){
+    		msg="证件有效期不能为空！";
+    	}else if(!value.checkDate){
+    		msg='证件签发日期不能为空！';
     	}
     	return msg;
     }

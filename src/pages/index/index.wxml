@@ -1,4 +1,5 @@
 <import src="../component/toast.wxml"/>
+
 <view class="container">
 <!--白色背景区域-->
 
@@ -19,24 +20,24 @@
   			<view class="startCity" bindtap="selectCity" data-type="1">{{startCity}}</view>
   			<view class="citySelect_img">
           <view catchtap="rotate_img" animation="{{animation}}">
-            <image class="changeCity_bg" src="../../images/changeCity_bg.png"></image>
+            <image class="changeCity_bg" src="/images/changeCity_bg.png"></image>
           </view>
-  				<image class="samll_plane" src="../../images/samll_plane.png"></image>
+  				<image class="samll_plane" src="/images/samll_plane.png"></image>
   			</view>
   			<view class="endCity" bindtap="selectCity" data-type="2">{{endCity}}</view>
   		</view>
 
       <view class="chooseDate">
         <block>
-          <picker mode="date" value="{{FSdate.currentday}}" start="{{FSdate.startday}}" bindchange="bingDateChange" data-type='1'>
-            <view class="startDate">
+          <picker mode="date" value="{{FSdate.currentday}}" start="{{FSdate.startday}}" bindchange="bingDateChange" data-type='1' class="pickerLine">
+            <view>
               <text class="date">{{FSdate.date}}</text>
               <text class="week">{{FSdate.week}}出发</text>
             </view>
           </picker>
         </block>
         <block wx:if="{{currentIndex==1}}">
-          <picker mode="date" value="{{FEdate.currentday}}" start="{{FEdate.startday}}" bindchange="bingDateChange" data-type='2'>
+          <picker mode="date" value="{{FEdate.currentday}}" start="{{FEdate.startday}}" bindchange="bingDateChange" data-type='2' class="pickerLine leftPicker">
             <view class="endDate">
               <text class="date">{{FEdate.date}}</text>
               <text class="week">{{FEdate.week}}返回</text>
@@ -58,7 +59,7 @@
           <picker mode="date" value="{{HSdate.currentday}}" start="{{HSdate.startday}}" bindchange="bingDateChange" data-type='3'>
             <view class="startDate">
               <text class="date">{{HSdate.date}}</text>
-              <text class="week">{{HSdate.week}}出发</text>
+              <text class="week">{{HSdate.week}}入住</text>
             </view>
           </picker>
         </block>
@@ -66,7 +67,7 @@
           <picker mode="date" value="{{HEdate.currentday}}" start="{{HEdate.startday}}" bindchange="bingDateChange" data-type='4'>
             <view class="endDate">
               <text class="date">{{HEdate.date}}</text>
-              <text class="week">{{HEdate.week}}返回</text>
+              <text class="week">{{HEdate.week}}离店</text>
             </view>
           </picker>
         </block>
@@ -93,11 +94,12 @@
           <view class="plus" bindtap="plusChildNum">+</view>
         </view>
       </view>
-      <view class="tishi" bindtap="alertWarn">
-        <image src="../../images/tishi.png" class="tsimg"></image>
+
+      <view class="remind" bindtap="alertWarn">
+        <image src="/images/tishi.png"></image>
       </view>
     </view>
 
-    <button class="sureBtn" bindtap="searchProduct">确定</button>
+    <button class="sureBtn" catchtap="searchProduct">确定</button>
   </view>
 </view>

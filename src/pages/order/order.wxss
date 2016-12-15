@@ -1,3 +1,8 @@
+page {
+  height: 100%;
+  background-color: #F0EFF5;
+}
+
 .containerSmall {
   width: 100%;
   margin: 0 auto;
@@ -6,24 +11,16 @@
   line-height: 1.04rem;
 }
 
-input {
-  font-family: '\5FAE\8F6F\96C5\9ED1';
-}
-
 .hid {
   display: none!important;
-}
-
-.airpeople_Line {
-  border-bottom: none!important;
 }
 
 .head {
   background: #59A5F0;
   width: 100%;
   position: fixed;
-  padding-left: 1.04rem;
-  padding-right: 1.04rem;
+  padding-left: 0.933333rem;
+  padding-right: 0.933333rem;
   z-index: 1001;
   box-sizing: border-box;
 }
@@ -39,50 +36,98 @@ input {
 }
 
 .state .gostate {
-  font-size: 26rpx;
+  font-size: 28rpx;
   height: 1.6rem;
   line-height: 1.6rem;
-  overflow: hidden;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .state .gostate .txtstate_02 {
-  margin-right: 0.933rem;
-  margin-left: 0.933rem;
-  height: 1.733333rem;
-}
-
-.state .gostate .txtstate_03 {
-  margin-left: 0.33rem;
+  margin-right: 0.533333rem;
+  margin-left: 0.533333rem;
 }
 
 .state .gostate .txtstate_04 {
   display: inline-block;
-  width: 3.28rem;
-  height: 1.733333rem;
-  text-align: right;
+  margin-left: 0.266667rem;
 }
 
 .ordergood {
-  background: #F0EFF5;
   position: absolute;
   top: 119rpx;
   width: 100%;
-  font-size: 28rpx;
+  font-size: 32rpx;
+}
+
+.borderBo {
+  position: relative;
+}
+
+.borderBo:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.borderTop {
+  position: relative;
+}
+
+.borderTop:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .banner {
   width: 100%;
-  border-bottom: 1px solid #C7C7C7;
   margin-top: 0;
   background: #fff;
   margin-bottom: 0.986667rem;
   padding-left: 0.906667rem;
   box-sizing: border-box;
+  position: relative;
+}
+
+.banner:before,
+.banner:after {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.banner:before {
+  border-top: 1px solid #C7C7C7;
+  top: 0;
+}
+
+.banner:after {
+  border-bottom: 1px solid #C7C7C7;
+  bottom: 0;
 }
 
 .airpeople {
   height: 2.773333rem;
-  border-bottom: 1px solid #C7C7C7;
+  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -91,18 +136,52 @@ input {
       align-items: center;
 }
 
+.airpeople:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.airpeople.border_none {
+  padding-right: 1.066667rem;
+}
+
+.airpeople.border_none:before {
+  display: none;
+}
+
 .airpeople input {
   font-family: 'Microsoft YaHei';
+  -ms-flex: 1;
+      flex: 1;
 }
 
 .airpeople .airp {
   display: block;
   color: #536277;
-  width: 4.8rem;
+  width: 25%;
 }
 
 .airpeople.airLine {
+  position: relative;
+}
+
+.airpeople.airLine:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
   border-top: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .airpeople .star {
@@ -112,13 +191,10 @@ input {
   color: #ff7f00;
 }
 
-.airpeople .addp {
-  margin-right: 1.04rem;
-}
-
 .airpeople .addp .add {
   width: 1.546667rem;
   height: 1.546667rem;
+  display: block;
 }
 
 .airpeople .picker {
@@ -128,17 +204,23 @@ input {
 .person {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
   -ms-flex-align: center;
       align-items: center;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  border-bottom: 1px solid #C7C7C7;
+  position: relative;
 }
 
-.person:last-child {
-  border-bottom: none;
+.person:before {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
 }
 
 .person .delete {
@@ -178,53 +260,59 @@ input {
       justify-content: space-around;
 }
 
-.person .message text {
-  display: block;
-  color: #536277;
+.person .message view {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
-.person .message text.name {
-  width: 40%;
-}
-
-.person .message text.card {
-  width: 60%;
-}
-
-.person .message .arow {
+.person .message view.arrow {
   width: 0.4rem;
   height: 0.693333rem;
   margin-right: 1.04rem;
 }
 
-.person .message .arow .arow_01 {
+.person .message view.arrow .arow_01 {
   width: 0.4rem;
   height: 0.693333rem;
+}
+
+.person .message view.personInfo {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex: 1;
+      flex: 1;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+
+.person .message view.personInfo view {
+  width: 100%;
+  color: #536277;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .banner_02 {
-  border-top: 1px solid #C7C7C7;
   padding-top: 0;
-}
-
-.airpeople_01 {
-  border-bottom: none;
-}
-
-.body-view_01 {
-  display: block;
-  line-height: 2.666667rem;
-  height: 2.666667rem;
-  width: 2.666667rem;
-  margin-right: 1.04rem;
-  box-sizing: border-box;
 }
 
 .body-view_01 switch {
   display: block;
-  height: 2.666667rem;
-  line-height: 2.666667rem;
-  margin-top: 0.48rem;
 }
 
 .hot_02 {
@@ -235,7 +323,7 @@ input {
 }
 
 .hot_02 input {
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 
 .arow_03 {
@@ -266,20 +354,6 @@ input {
   height: 5.493333rem;
 }
 
-.airpeople_02 {
-  height: 2.666667rem;
-  width: 100%;
-  padding-left: 0.933333rem;
-  border-bottom: 0;
-  box-sizing: border-box;
-}
-
-.airpeople_03 {
-  height: 2.666667rem;
-  padding-left: 0.933333rem;
-  border-bottom: 1px solid #C7C7C7;
-}
-
 .picker {
   color: #929FB1;
   font-family: 'Microsoft YaHei';
@@ -292,7 +366,6 @@ label {
 input {
   height: 2.666667rem;
   line-height: 2.666667rem;
-  width: 13.333333rem;
   display: block;
 }
 

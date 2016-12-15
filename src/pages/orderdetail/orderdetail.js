@@ -1,4 +1,5 @@
 let app = getApp();
+let utils = require('../../utils/utils');
 let loginCount = 0;
 
 Page({
@@ -64,24 +65,41 @@ Page({
   },
 
 
-  gotoPay(){//todo
-    console.log('ok');
+  gotoPay(){ //todo
+    app.post(`api/Order/GetOrderPayUrl`, {
+      OrderID: this.orderId,
+      PayIndex: this.data.orderModel.NextState
+    }).then((data) => {
+      console.log('data',data);
+    }).catch((err) => {
+      console.log(err)
+    })
   },
 
   cancelOrder(){
-    app.post(`api/Order/UserCancelOrder`, {
-      OrderID: this.orderId
-    }).then((data) => {
-      if(!!data.Data.IsSuccess){
-        this.setData({
-          orderModel: Object.assign(this.data.orderModel,{
-            OrderStatus: '已取消',
-            NextState: 0
-          })
+    utils.confirm('是否取消订单？',(res) => {
+      if(res.confirm){
+        app.post(`api/Order/UserCancelOrder`, {
+          OrderID: this.orderId
+        }).then((data) => {
+          if(!!data.Data.IsSuccess){
+
+            utils.message('取消订单成功');
+
+            this.mergeData = {
+              OrderStatus: '已取消',
+              NextState: 0,
+              OrderID: this.orderId
+            }
+
+            this.setData({
+              orderModel: Object.assign(this.data.orderModel,this.mergeData)
+            })
+    			}
+        }).catch((err) => {
+          console.log(err)
         })
-			}
-    }).catch((err) => {
-      console.log(err)
+      }
     })
   },
 
@@ -90,7 +108,7 @@ Page({
     this.setData({
       roomInfo: {
         show: true,
-        infos: this.data.orderModel.Hotels[index].HotelDesc
+        infos: utils.replaceHtml(this.data.orderModel.Hotels[index].HotelDesc)
       }
     })
   },
@@ -104,13 +122,14 @@ Page({
     })
   },
 
-  /*onUnload(){
+  onUnload(){
     let refreshOrderList = app.globalData.refreshOrderList;
+    let that = this;
 
     if(typeof refreshOrderList === 'function'){
       setTimeout(function(){
-        refreshOrderList();
+        refreshOrderList(that.mergeData);
       },0);
     }
-  }*/
+  }
 })

@@ -19,3 +19,16 @@
     </view>
   </block>
 </template>
+
+<!-- loading -->
+<template name="loading">
+  <view wx:if="{{loading}}" class="loadingOuter">
+      <view class="loadmore">
+        <view class="loading"></view>
+        <view class="loadmore__tips">这里要久一点……</view>
+      </view>
+      <view class="loadingImage">
+        <image mode="aspectFit" src="/images/logotext.png"></image>
+      </view>
+  </view>
+</template>

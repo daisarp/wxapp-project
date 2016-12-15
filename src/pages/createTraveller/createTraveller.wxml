@@ -1,4 +1,3 @@
-
 <view class="container">
     <!--新建旅客-->
     <form bindsubmit="formBindsubmit">
@@ -9,11 +8,11 @@
                         <label class="airp">姓名（中文）</label>
                         <input placeholder="姓名与证件一致" type="text" name="name" placeholder-style="color:#ddd; font-size:32rpx;font-family:'Microsoft YaHei';" value="{{name}}" />
                     </view>
-                    <view class="airpeople" hidden="{{!isInternational}}">
+                    <view  wx:if="{{isInternational}}" class="airpeople">
                         <label class="airp">姓（英文）</label>
                         <input placeholder="姓（Surname）" type="text" name="firstName" placeholder-style="color:#ddd; font-size:32rpx;font-family:'Microsoft YaHei';" value="{{firstName}}" />
                     </view>
-                     <view class="airpeople" hidden="{{!isInternational}}">
+                     <view class="airpeople" wx:if="{{isInternational}}">
                         <label class="airp">名（英文）</label>
                         <input placeholder="名（Given name）" type="text" name="lastName" placeholder-style="color:#ddd; font-size:32rpx;font-family:'Microsoft YaHei';" value="{{lastName}}" />
                     </view>
@@ -35,73 +34,47 @@
                     <view class="airpeople">
                         <label class="airp">出生日期</label>
                         <picker mode="date" value="{{birthday}}"  name='birthday' start="{{startDate}}" end="{{endDate}}" data-key="birthday" bindchange="bindSelectChange">
-                          <view wx:if="{{birthday}}">
-                            {{birthday}}
-                          </view>
-                          <view wx:else class="placeholder">
-                            日期与证件一致
-                          </view>
+                          <view wx:if="{{birthday}}">{{birthday}}</view>
+                          <view wx:else class="placeholder">日期与证件一致</view>
                         </picker>
-
+                        <image src="/images/arow.png" class="arow" mode="aspectFit"></image>
                     </view>
-                    <view class="airpeople" hidden="{{!isInternational}}">
+                    <view class="airpeople" wx:if="{{isInternational}}">
                         <label class="airp">国籍</label>
-                        <picker mode="selector" name='countryValue' range="{{countryOptionValues}}" value="{{countryValue}}" data-key="countryValue" bindchange="bindSelectChange">
-                            {{countryOptionValues[countryValue]}}
-                        </picker>
-
+                        <picker mode="selector" name='countryValue' range="{{countryOptionValues}}" value="{{countryValue}}" data-key="countryValue" bindchange="bindSelectChange">{{countryOptionValues[countryValue]}}</picker>
                         <image src="/images/arow.png" class="arow" mode="aspectFit"></image>
                     </view>
                     <view class="airpeople">
                         <label class="airp">证件类型</label>
-
-                        <picker mode="selector" name="cardType" range="{{cardTypeValues}}" value="{{cardType}}" data-key="cardType" bindchange="bindSelectCardChange">
-                            {{cardTypeValues[cardType]}}
-                        </picker>
-
+                        <picker mode="selector" name="cardType" range="{{cardTypeValues}}" value="{{cardType}}" data-key="cardType" bindchange="bindSelectCardChange">{{cardTypeValues[cardType]}}</picker>
                         <image src="/images/arow.png" class="arow" mode="aspectFit"></image>
                     </view>
                     <view class="airpeople">
                         <label class="airp">证件号码</label>
                         <input placeholder="号码与证件一致" type="text" name="cardNo" value="{{cardNo}}" placeholder-style="color:#ddd; font-size:32rpx;font-family:'Microsoft YaHei';" />
                     </view>
-                    <view class="airpeople" hidden="{{!isPassport}}">
-                        <label class="airp">护照签发国</label>
-                        <picker mode="selector" range="{{countryOptionValues}}" name="checkCityValue" value="{{checkCityValue}}" data-key="checkCityValue" bindchange="bindSelectChange">
-                            {{countryOptionValues[checkCityValue]}}
-                        </picker>
-
+                    <view class="airpeople" wx:if="{{isPassport||isInternational?true:flase}}">
+                        <label class="airp">签发地</label>
+                        <picker mode="selector" range="{{countryOptionValues}}" name="checkCityValue" value="{{checkCityValue}}" data-key="checkCityValue" bindchange="bindSelectChange">{{countryOptionValues[checkCityValue]}}</picker>
                         <image src="/images/arow.png" class="arow" mode="aspectFit"></image>
                     </view>
-                    <view class="airpeople" hidden="{{!isPassport}}">
-                        <label class="airp">护照签发日期</label>
+                    <view class="airpeople" wx:if="{{isPassport||isInternational?true:flase}}">
+                        <label class="airp">签发日期</label>
                         <picker mode="date" value="{{checkDate}}"  name="checkDate" data-key="checkDate" bindchange="bindSelectChange" start='{{startDate}}' end="{{endDate}}">
-                          <view wx:if="{{checkDate}}">
-                            {{checkDate}}
-                          </view>
-                          <view wx:else class="placeholder">
-                            日期与证件一致
-                          </view>
+                          <view wx:if="{{checkDate}}">{{checkDate}}</view>
+                          <view wx:else class="placeholder">日期与证件一致</view>
                         </picker>
                     </view>
-                    <view class="airpeople" hidden="{{!isPassport}}">
-                        <label class="airp">护照有效期</label>
+                    <view class="airpeople" wx:if="{{isPassport||isInternational?true:flase}}">
+                        <label class="airp">证件有效期</label>
                         <picker mode="date" value="{{passportExpireDate}}" name="passportExpireDate" data-key="passportExpireDate" bindchange="bindSelectChange" start='{{endDate}}' end="{{endDateF}}">
-                          <view wx:if="{{passportExpireDate}}">
-                            {{passportExpireDate}}
-                          </view>
-                          <view wx:else class="placeholder">
-                            日期与证件一致
-                          </view>
+                          <view wx:if="{{passportExpireDate}}">{{passportExpireDate}}</view>
+                          <view wx:else class="placeholder">日期与证件一致</view>
                         </picker>
                     </view>
                     <view class="airpeople">
                         <label class="airp">旅客类型</label>
-
-                        <picker mode="selector" range="{{customerTypeValues}}" name="customerType" value="{{customerType}}" data-key="customerType">
-                            {{customerTypeValues[customerType]}}
-                        </picker>
-
+                        <picker mode="selector" range="{{customerTypeValues}}" name="customerType" value="{{customerType}}" data-key="customerType" bindchange="bindSelectChange">{{customerTypeValues[customerType]}}</picker>
                         <image src="/images/arow.png" class="arow" mode="aspectFit"></image>
                     </view>
 
@@ -128,7 +101,7 @@
             </view> -->
         </view>
 
-        <button class="addperson" formType="submit" >确定</button>
+        <button class="addperson" formType="submit">确定</button>
 
     </form>
 

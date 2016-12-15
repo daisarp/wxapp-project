@@ -1,12 +1,11 @@
-<!--index.wxml-->
 <view class="container">
     <!--酒店详情-->
     <view class="hotelDetails">
-        <image src="{{selectHotelInfo.PictureAppURL}}" class="hotelImage" background-size="cover"></image>
+        <image src="{{selectHotelInfo.PictureAppURL}}" class="hotelImage" mode="aspectFill"></image>
         <view class="hotelName">{{selectHotelInfo.HotelName}}</view>
     </view>
     <view class="mapImage">
-        <image class="mapIcon" src="../../images/map.png"></image>
+        <image class="mapIcon" src="/images/map.png"></image>
         <text>{{selectHotelInfo.HotelAddress}}</text>
     </view>
     <view class="iconImage">
@@ -15,9 +14,18 @@
                 <icon type="success_circle" size="20" color="#7D8DA4" /> 酒店设施：
             </view>
             <view class="rightIcon">
-                <image wx:if="{{selectHotelInfo.Gym}}" class="Image_01" src="/images/training.png"></image>
-                <image wx:if="{{selectHotelInfo.Swimming}}" class="Image_02" src="/images/swim.png"></image>
-                <image wx:if="{{selectHotelInfo.WIFI}}" class="Image_03" src="/images/wifi.png"></image>
+                <view hidden="{{!selectHotelInfo.Gym}}">
+                  <image class="Image_01" src="/images/training.png"></image>
+                </view>
+
+                <view hidden="{{!selectHotelInfo.Swimming}}">
+                  <image class="Image_02" src="/images/swim.png"></image>
+                </view>
+
+                <view hidden="{{!selectHotelInfo.WIFI}}">
+                  <image class="Image_03" src="/images/wifi.png"></image>
+                </view>
+
             </view>
         </view>
         <view class="down">
@@ -60,19 +68,10 @@
                 <view class="roomcontainer">
                   <view catchtap="bindRoomNum" wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:key="{{index}}" data-num="{{index}}" class="number">
                       <text class="leftFixed">{{item + 1}}间</text>
-                      <text class="rightFixed">{{(changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice) >= 0 ? '+￥' : '-￥'}}{{(changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice) >= 0 ?  (changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice): (-changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice)}}</text>
+                      <text class="rightFixed">{{(changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice) >= 0 ? '+￥' : '-￥'}}{{(changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice) >= 0 ?  (changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice): (-(changeRoom.selectRoomInfo.PriceDifference + (item + 1 - changeRoom.selectRoomInfo.BookingQuantity) * changeRoom.selectRoomInfo.SalePrice))}}</text>
                   </view>
                 </view>
             </view>
         </view>
-
-        <!-- 收起展开 以后再做-->
-        <!-- <view class="footer">
-            <text class="retract">展开</text>
-            <text class="retract">收起</text>
-            <image class="footerIcon" src="../../images/bencher.png">
-                <image class="topimg" src="../../images/top.png"></image>
-                <image class="hidden" src="../../images/footerDown.png"></image>
-            </image>
-        </view> -->
     </view>
+</view>

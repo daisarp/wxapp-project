@@ -4,10 +4,10 @@ var oneDay = 1*24*60*60*1000;
 Page({
   data: {
     currentIndex: '1',
-    startCity: '广州',
-    endCity: '上海',
+    startCity: '上海',
+    endCity: '南京',
     hotelCity: '上海',
-    adultNum: 2,
+    adultNum: 1,
     childNum: 0,
     rotate: -180,
     toast1: {
@@ -45,12 +45,6 @@ Page({
         startday: dateFormat.formatDay(new Date(Date.now() + 2*oneDay)),
         currentday: dateFormat.formatDay(new Date(Date.now() + 2*oneDay))
       }
-    })
-  },
-  onReady: function(){
-    this.animation = wx.createAnimation({
-      timingFunction: "ease",
-      duration: 400
     })
   },
   minusAdultNum: function(){//减少成人的数量
@@ -158,14 +152,22 @@ Page({
   },
 
   rotate_img: function() {//旋转飞机图片
-    this.animation.rotateZ(this.data.rotate).step()
+    var animation = wx.createAnimation({
+      timingFunction: "ease",
+      duration: 400
+    })
+    this.animation = animation;
+    animation.rotateZ(this.data.rotate).step();
+     
     this.setData({
       rotate: -1*this.data.rotate,
       startCity: this.data.endCity,
       endCity: this.data.startCity,
-      animation: this.animation.export()
+      animation: animation.export(),
     })
+
   },
+
   changeBtn: function(ev) {//单程，往返切换
     this.setData({
       currentIndex: ev.target.dataset.index
@@ -186,7 +188,7 @@ Page({
           FEdate: {
             date: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatTime(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatTime(new Date(this.data.FEdate.currentday)),
             week: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatWeek(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatWeek(new Date(this.data.FEdate.currentday)),
-            startday: this.data.FEdate.startday,
+            startday: dateFormat.formatDay(new Date(new Date(e.detail.value).getTime() + oneDay)),//todo
             currentday: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatDay(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatDay(new Date(this.data.FEdate.currentday))
           },
           HSdate: {
@@ -230,7 +232,7 @@ Page({
           HEdate: {
             date: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatTime(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatTime(new Date(this.data.FEdate.currentday)),
             week: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatWeek(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatWeek(new Date(this.data.FEdate.currentday)),
-            startday: this.data.HEdate.startday,
+            startday: dateFormat.formatDay(new Date(new Date(e.detail.value).getTime() + oneDay)),//todo
             currentday: this.compareDay(e.detail.value, this.data.FEdate.currentday) === false ? dateFormat.formatDay(new Date(new Date(e.detail.value).getTime() + oneDay)) : dateFormat.formatDay(new Date(this.data.FEdate.currentday))
           }
         })
@@ -261,11 +263,10 @@ Page({
   alertWarn: function(){
     var obj = {
       pointer: this,
-      duration: 2000
+      duration: 3000
     }
     app.toast2(obj);
   },
-
   searchProduct: function(){//跳转详情页
     var objParams = { //单程的params的参数
       'AirStartCityName': this.data.startCity,
@@ -291,7 +292,6 @@ Page({
       url:'../productDetail/productDetail?level=1'
     })
   },
-
   selectCity: function(e){//选择城市 切换保存方法
     var type = e.currentTarget.dataset.type;
     var that = this;

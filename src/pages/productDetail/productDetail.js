@@ -1,6 +1,7 @@
 let app = getApp();
 let compose = require('../../utils/compose');
 let dateFormat = require('../../utils/dateutil');
+let utils = require('../../utils/utils');
 let productSearchParams;
 Page({
   data: {
@@ -9,12 +10,10 @@ Page({
       btnWord: '下一步'
     },
     loading: true,
-    toast1: {
-      show: false,
-      alertWarn: 'warn',
-      info: ''
-    },
     costDetail: {
+      show: false
+    },
+    warnAlert: {
       show: false
     }
   },
@@ -26,6 +25,7 @@ Page({
     });
 
     productSearchParams = wx.getStorageSync('productSearchParams');
+
     let productParams = Object.assign({}, productSearchParams,{//选择航班酒店的信息
       AirGoDate: compose(dateFormat.formatTime, dateFormat.detimestamp)(productSearchParams.AirGoDate),
       AirGoDate2: compose(dateFormat.formatDay2, dateFormat.detimestamp)(productSearchParams.AirGoDate),
@@ -44,8 +44,9 @@ Page({
       productParams: productParams
     });
 
-
+    productSearchParams.FlightSourceType=productSearchParams.GoSourceType;
     app.post('api/Product/SearchProductList', productSearchParams).then((data) => {
+      if(this.isUnload)return;
       if(data.Code == 201 && data.BCode == 501){
         app.globalData.errMsg = data.Msg;
         wx.redirectTo({
@@ -216,13 +217,21 @@ Page({
 
   //特别提示
   bindspecialWarn: function(){
-    var obj = {
-      pointer: this,
-      info: this.data.specialWarn,
-      duration: 2000
-    }
-    app.toast1(obj);
+    this.setData({
+      warnAlert: {
+        show: true,
+        info: utils.replaceHtml(this.data.specialWarn)
+      }
+    })
+  },
 
+  //隐藏特别提示
+  hideWarnAlert(){
+    this.setData({
+      warnAlert: {
+        show: false
+      }
+    })
   },
 
   //酒店详情跳转
@@ -258,7 +267,7 @@ Page({
   },
 
   //下一步
-  nextStepOrder: function(){ //todo 需要登录
+  nextStepOrder: function(){
     let ProductKey='';
 
     app.post('api/Product/SubmitSelectedProduct',{
@@ -288,9 +297,9 @@ Page({
           , RoomNumber:productSearchParams.RoomNumber
           , AddBedNumber:productSearchParams.AddBedNumber
       }
-    }).then(function(data){
+    }).then((data)=>{
       wx.hideToast();
-
+      if(this.isUnload)return;
       if(data.Code==200){
         wx.navigateTo({
           url: `../order/order?productKey=${data.Data.key}&adultNum=${productSearchParams.AdultNum}&childrenNum=${productSearchParams.ChildrenNum}`
@@ -309,10 +318,11 @@ Page({
         })
       }
     })
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 10000
-    })
+
+    utils.loadingShow();
+
+  },
+  onUnload:function(){
+    this.isUnload=true;
   }
 })

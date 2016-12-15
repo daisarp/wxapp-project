@@ -9,7 +9,7 @@
   <view class="wrapCity">
     <swiper current="{{currentIndex}}" duration="100"  bindchange="handleChangeEvent">
       <swiper-item>
-        <scroll-view scroll-y="true" scroll-into-view="{{letterId}}" scroll-top="200">
+        <scroll-view scroll-y="true" scroll-into-view="{{letterId}}">
           <view class="cityList">
             <block wx:for="{{lettersCh}}" wx:key="*this"  wx:for-item='le'>
               <view class="letterList" id="{{le+'0'}}">{{le}}</view>

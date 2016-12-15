@@ -1,28 +1,17 @@
 page {
   height: 100%;
+  width: 100%;
+  background: #F0EFF5;
 }
 
 .container {
   height: 100%;
   width: 100%;
-  padding-bottom: 0.8rem;
 }
 
 form {
   width: 100%;
   height: auto;
-}
-
-label {
-  width: 40%;
-}
-
-input {
-  height: 2.666667rem;
-  line-height: 2.666667rem;
-  display: block;
-  width: 60%;
-  padding-right: 60rpx;
 }
 
 picker {
@@ -35,7 +24,6 @@ picker {
 
 picker .placeholder {
   color: #ddd;
-  font-size: 32rpx;
 }
 
 radio-group {
@@ -76,20 +64,15 @@ radio-group .radio radio {
 
 .ordergood .banner {
   width: 100%;
-  border-bottom: 1px solid #C7C7C7;
-  border-top: 1px solid #C7C7C7;
   padding-top: 0;
   background: #fff;
 }
 
 .ordergood .banner .airpeople {
   height: 2.773333rem;
-  border-bottom: 1px solid #C7C7C7;
   line-height: 2.773333rem;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
   -ms-flex: 1;
       flex: 1;
   -ms-flex-pack: start;
@@ -99,9 +82,33 @@ radio-group .radio radio {
   position: relative;
 }
 
-.ordergood .banner .airpeople .airp {
+.ordergood .banner .airpeople:after {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: 1px solid #C7C7C7;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.ordergood .banner .airpeople label.airp {
+  width: 7em;
   display: block;
-  color: #929fb1;
+  color: #536277;
+  font-size: 32rpx;
+}
+
+.ordergood .banner .airpeople input {
+  height: 2.666667rem;
+  line-height: 2.666667rem;
+  display: block;
+  width: 100%;
+  -ms-flex: 1;
+      flex: 1;
+  padding-right: 0.8rem;
   font-size: 32rpx;
 }
 
@@ -119,7 +126,7 @@ radio-group .radio radio {
   color: #59a5f0;
 }
 
-.ordergood .banner .airpeople:last-child {
+.ordergood .banner .airpeople:last-child:after {
   border-bottom: none;
 }
 
@@ -137,7 +144,29 @@ radio-group .radio radio {
 }
 
 .layout {
-  margin-left: 0.906667rem;
+  padding-left: 1.013333rem;
+  position: relative;
+}
+
+.layout:before,
+.layout:after {
+  content: '';
+  width: 200%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.layout:before {
+  top: 0;
+  border-top: 1px solid #C7C7C7;
+}
+
+.layout:after {
+  bottom: 0;
+  border-bottom: 1px solid #C7C7C7;
 }
 
 .travellerCard {
@@ -148,7 +177,7 @@ radio-group .radio radio {
 .travellerCard label {
   float: left;
   width: 500rpx;
-  color: #4a586a;
+  color: #536277;
   font-size: 32rpx;
   margin-left: 0.906667rem;
 }
